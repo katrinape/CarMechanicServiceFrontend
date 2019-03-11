@@ -1,0 +1,46 @@
+<div class="mat-elevation-z8">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+    <!-- Brand Column -->
+    <ng-container matColumnDef="brand">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Brand</th>
+      <td mat-cell *matCellDef="let row">{{row.brand}}</td>
+    </ng-container>
+
+    <!-- Registration Column -->
+    <ng-container matColumnDef="regNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Registration Number</th>
+      <td mat-cell *matCellDef="let row">{{row.regNumber}}</td>
+    </ng-container>
+
+    <!-- VIN Column -->
+    <ng-container matColumnDef="vin">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>VIN</th>
+      <td mat-cell *matCellDef="let row">{{row.vin}}</td>
+    </ng-container>
+
+    <!-- Mileage Column -->
+    <ng-container matColumnDef="mileage">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Mileage</th>
+      <td mat-cell *matCellDef="let row">{{row.mileage}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource.data.length"
+      [pageIndex]="0"
+      [pageSize]="50"
+      [pageSizeOptions]="[25, 50, 100, 250]">
+  </mat-paginator>
+</div>
