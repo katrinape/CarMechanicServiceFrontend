@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {CarItem} from './car-item';
 
-
 @Injectable({
   providedIn: 'root'
 })

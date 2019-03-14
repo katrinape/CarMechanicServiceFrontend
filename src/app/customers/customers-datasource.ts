@@ -1,7 +1,7 @@
-import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator, MatSort } from '@angular/material';
-import { map } from 'rxjs/operators';
-import { Observable, of as observableOf, merge } from 'rxjs';
+import {DataSource} from '@angular/cdk/collections';
+import {MatPaginator, MatSort} from '@angular/material';
+import {map} from 'rxjs/operators';
+import {Observable, merge} from 'rxjs';
 import {Customer} from './customer';
 import {CustomerService} from './customer.service';
 
@@ -18,7 +18,7 @@ export class CustomersDataSource extends DataSource<Customer> {
     this.customerService.getCustomers().subscribe(
       customers => this.data = customers,
       error1 => console.log(error1)
-    )
+    );
   }
 
   /**
@@ -46,7 +46,8 @@ export class CustomersDataSource extends DataSource<Customer> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect() {}
+  disconnect() {
+  }
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
@@ -69,12 +70,18 @@ export class CustomersDataSource extends DataSource<Customer> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'surname': return compare(a.surname, b.surname, isAsc);
-        case 'email': return compare(a.email, b.email, isAsc);
-        case 'telNumber': return compare(a.telNumber, b.telNumber, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
-        default: return 0;
+        case 'name':
+          return compare(a.name, b.name, isAsc);
+        case 'surname':
+          return compare(a.surname, b.surname, isAsc);
+        case 'email':
+          return compare(a.email, b.email, isAsc);
+        case 'telNumber':
+          return compare(a.telNumber, b.telNumber, isAsc);
+        case 'id':
+          return compare(+a.id, +b.id, isAsc);
+        default:
+          return 0;
       }
     });
   }
