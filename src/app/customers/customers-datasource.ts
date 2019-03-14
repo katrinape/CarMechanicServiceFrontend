@@ -1,23 +1,23 @@
-import {DataSource} from '@angular/cdk/collections';
-import {MatPaginator, MatSort} from '@angular/material';
-import {map} from 'rxjs/operators';
-import {merge, Observable} from 'rxjs';
-import {CarService} from './car.service';
-import {CarItem} from './car-item';
+import { DataSource } from '@angular/cdk/collections';
+import { MatPaginator, MatSort } from '@angular/material';
+import { map } from 'rxjs/operators';
+import { Observable, of as observableOf, merge } from 'rxjs';
+import {Customer} from './customer';
+import {CustomerService} from './customer.service';
 
 /**
- * Data source for the Cars view. This class should
+ * Data source for the Customers view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class CarsDataSource extends DataSource<CarItem> {
-  data: CarItem[] = [];
+export class CustomersDataSource extends DataSource<Customer> {
+  data: Customer[] = [];
 
-  constructor(private paginator: MatPaginator, private sort: MatSort, private carService: CarService) {
+  constructor(private paginator: MatPaginator, private sort: MatSort, private customerService: CustomerService) {
     super();
-    this.carService.getCars().subscribe(
-      cars => this.data = cars,
-      err => console.log(err)
+    this.customerService.getCustomers().subscribe(
+      customers => this.data = customers,
+      error1 => console.log(error1)
     )
   }
 
@@ -26,11 +26,10 @@ export class CarsDataSource extends DataSource<CarItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<CarItem[]> {
-
+  connect(): Observable<Customer[]> {
     // Combine everything that affects the rendered data into one update stream for the data-table to consume.
     const dataMutations = [
-      this.carService.getCars(),
+      this.customerService.getCustomers(),
       this.paginator.page,
       this.sort.sortChange
     ];
@@ -47,14 +46,13 @@ export class CarsDataSource extends DataSource<CarItem> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect() {
-  }
+  disconnect() {}
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: CarItem[]) {
+  private getPagedData(data: Customer[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -63,25 +61,20 @@ export class CarsDataSource extends DataSource<CarItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: CarItem[]) {
+  private getSortedData(data: Customer[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
+
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'brand':
-          return compare(a.brand, b.brand, isAsc);
-        case 'regNumber':
-          return compare(a.regNumber, b.regNumber, isAsc);
-        case 'vin':
-          return compare(a.vin, b.vin, isAsc);
-        case 'mileage':
-          return compare(+a.mileage, +b.mileage, isAsc);
-        case 'id':
-          return compare(+a.id, +b.id, isAsc);
-        default:
-          return 0;
+        case 'name': return compare(a.name, b.name, isAsc);
+        case 'surname': return compare(a.surname, b.surname, isAsc);
+        case 'email': return compare(a.email, b.email, isAsc);
+        case 'telNumber': return compare(a.telNumber, b.telNumber, isAsc);
+        case 'id': return compare(+a.id, +b.id, isAsc);
+        default: return 0;
       }
     });
   }

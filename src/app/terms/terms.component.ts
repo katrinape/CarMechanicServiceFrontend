@@ -40,10 +40,7 @@ export class TermsComponent {
           { title: '25', cols: 1, rows: 1 },
           { title: '26', cols: 1, rows: 1 },
           { title: '27', cols: 1, rows: 1 },
-          { title: '28', cols: 1, rows: 1 },
-          { title: '29', cols: 1, rows: 1 },
-          { title: '30', cols: 1, rows: 1 },
-          { title: '31', cols: 1, rows: 1 }
+          { title: '28', cols: 1, rows: 1 }
         ];
       }
 
@@ -75,10 +72,7 @@ export class TermsComponent {
         { title: '25', cols: 1, rows: 1 },
         { title: '26', cols: 1, rows: 1 },
         { title: '27', cols: 1, rows: 1 },
-        { title: '28', cols: 1, rows: 1 },
-        { title: '29', cols: 1, rows: 1 },
-        { title: '30', cols: 1, rows: 1 },
-        { title: '31', cols: 1, rows: 1 },
+        { title: '28', cols: 1, rows: 1 }
       ];
     })
   );

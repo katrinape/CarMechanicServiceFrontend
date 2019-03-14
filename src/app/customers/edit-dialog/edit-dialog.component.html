@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Edit Customer</h1>
+<div mat-dialog-content>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Name" [(ngModel)]="data.name">
+    <button matSuffix mat-button mat-icon-button aria-label="Clear" matTooltip="Clear"
+            *ngIf="data.name" (click)="data.name=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Surname" [(ngModel)]="data.surname">
+    <button matSuffix mat-button mat-icon-button aria-label="Clear" matTooltip="Clear"
+            *ngIf="data.surname" (click)="data.surname=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Telephone number" [(ngModel)]="data.telNumber">
+    <button matSuffix mat-button mat-icon-button aria-label="Clear" matTooltip="Clear"
+            *ngIf="data.telNumber" (click)="data.telNumber=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Email address" [(ngModel)]="data.email">
+    <button matSuffix mat-button mat-icon-button aria-label="Clear" matTooltip="Clear"
+            *ngIf="data.email" (click)="data.email=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

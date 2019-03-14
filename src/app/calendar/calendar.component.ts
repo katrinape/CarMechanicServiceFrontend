@@ -15,8 +15,9 @@ export class CalendarComponent implements OnInit {
   constructor(private http: HttpClient) {
   }
 
-  createEvent(event: Event) {
+  createEvent(event: Object) {
     this.http.post('http://localhost:8080/reservations', event);
+    console.log(event.toString())
   }
 
   ngOnInit() {
@@ -38,7 +39,7 @@ export class CalendarComponent implements OnInit {
       minTime: '06:00:00',
       maxTime: '22:00:00',
       firstDay: 1,
-      dayClick: function (date) {
+      dayClick: date => {
         let eventTitle = prompt('Co mam dodać?');
         if (eventTitle !== null && eventTitle.trim().length > 1) {
           $('#calendar').fullCalendar(
@@ -48,31 +49,23 @@ export class CalendarComponent implements OnInit {
               allDay: true
             }, true
           );
-          console.log(date.toISOString());
-          $.ajax({
-            url: 'http://localhost:8080/reservations',
-            method: 'POST',
-            data: {
-              title: eventTitle,
-
-            },
-            error: function(e) {
-              console.log(e.responseText);
-            },
-            dataType: 'json',
-            contentType: 'application/json',
-          })
         }
+        this.createEvent({
+          title: "Naprawa zawieszenia",
+          start: "2019-04-15",
+          description: "godz 15"
+        });
       },
-      eventClick: function (event) {
-        alert(event.title + ' ' + event.description);
-      },
-      eventRender: function (event, element) {
-        element.css({
+      eventClick: event => alert(event.title + ' ' + event.description),
+      eventRender: (event, element) => { element.css({
           fontSize: '1.5rem',
           background: 'white',
           padding: '5px',
         });
+      },
+      eventReceive: event1 => {
+        this.http.post('http://localhost:8080/reservations', event1);
+        console.log(event1)
       },
       eventTextColor: '#000',
       contentHeight: 'auto',

@@ -1,24 +1,24 @@
 import {DataSource} from '@angular/cdk/collections';
 import {MatPaginator, MatSort} from '@angular/material';
 import {map} from 'rxjs/operators';
-import {merge, Observable} from 'rxjs';
-import {CarService} from './car.service';
-import {CarItem} from './car-item';
+import {Observable, merge} from 'rxjs';
+import {EventService} from './event.service';
+import {EventItem} from './event-item';
 
 /**
- * Data source for the Cars view. This class should
+ * Data source for the Events view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class CarsDataSource extends DataSource<CarItem> {
-  data: CarItem[] = [];
+export class EventsDataSource extends DataSource<EventItem> {
+  data: EventItem[] = [];
 
-  constructor(private paginator: MatPaginator, private sort: MatSort, private carService: CarService) {
+  constructor(private paginator: MatPaginator, private sort: MatSort, private eventService: EventService) {
     super();
-    this.carService.getCars().subscribe(
-      cars => this.data = cars,
-      err => console.log(err)
-    )
+    eventService.getEvents().subscribe(
+      events => this.data = events,
+      error1 => console.log(error1)
+    );
   }
 
   /**
@@ -26,11 +26,10 @@ export class CarsDataSource extends DataSource<CarItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<CarItem[]> {
-
+  connect(): Observable<EventItem[]> {
     // Combine everything that affects the rendered data into one update stream for the data-table to consume.
     const dataMutations = [
-      this.carService.getCars(),
+      this.eventService.getEvents(),
       this.paginator.page,
       this.sort.sortChange
     ];
@@ -54,7 +53,7 @@ export class CarsDataSource extends DataSource<CarItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: CarItem[]) {
+  private getPagedData(data: EventItem[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -63,21 +62,20 @@ export class CarsDataSource extends DataSource<CarItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: CarItem[]) {
+  private getSortedData(data: EventItem[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
+
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'brand':
-          return compare(a.brand, b.brand, isAsc);
-        case 'regNumber':
-          return compare(a.regNumber, b.regNumber, isAsc);
-        case 'vin':
-          return compare(a.vin, b.vin, isAsc);
-        case 'mileage':
-          return compare(+a.mileage, +b.mileage, isAsc);
+        case 'title':
+          return compare(a.title, b.title, isAsc);
+        case 'description':
+          return compare(a.description, b.description, isAsc);
+        case 'start':
+          return compare(a.start, b.start, isAsc);
         case 'id':
           return compare(+a.id, +b.id, isAsc);
         default:

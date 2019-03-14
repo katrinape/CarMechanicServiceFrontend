@@ -19,7 +19,7 @@ import {
   MatTreeModule,
   MatInputModule,
   MatSelectModule,
-  MatRadioModule, MatCommonModule,
+  MatRadioModule, MatCommonModule, MatTooltipModule, MatRippleModule, MatDialogModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -36,6 +36,12 @@ import {CalendarComponent} from './calendar/calendar.component';
 import {CommonModule} from '@angular/common';
 import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import {AddCustomerComponent} from './add-customer/add-customer.component';
+import {CustomersComponent} from './customers/customers.component';
+import {RepairsComponent} from './repairs/repairs.component';
+import {EventsComponent} from './events/events.component';
+import { EditDialogComponent } from './customers/edit-dialog/edit-dialog.component';
+import { DeleteDialogComponent } from './customers/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +53,13 @@ import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
     AddressFormComponent,
     CarsComponent,
     TermsComponent,
-    CalendarComponent
+    CalendarComponent,
+    AddCustomerComponent,
+    CustomersComponent,
+    RepairsComponent,
+    EventsComponent,
+    EditDialogComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +79,7 @@ import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
     MatCardModule,
     MatMenuModule,
     DragDropModule,
+    MatDialogModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -74,6 +87,8 @@ import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    MatRippleModule,
+    MatTooltipModule,
     MatCommonModule,
     CommonModule,
     FormsModule,
@@ -82,7 +97,7 @@ import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
       useFactory: adapterFactory
     })
   ],
-  entryComponents: [],
+  entryComponents: [EditDialogComponent, DeleteDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -8,6 +8,10 @@ import {AddressFormComponent} from './address-form/address-form.component';
 import {CarsComponent} from './cars/cars.component';
 import {TermsComponent} from './terms/terms.component';
 import {CalendarComponent} from './calendar/calendar.component';
+import {AddCustomerComponent} from './add-customer/add-customer.component';
+import {CustomersComponent} from './customers/customers.component';
+import {RepairsComponent} from './repairs/repairs.component';
+import {EventsComponent} from './events/events.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
@@ -18,6 +22,10 @@ const routes: Routes = [
   {path: 'cars', component: CarsComponent},
   {path: 'terms', component: TermsComponent},
   {path: 'calendar', component: CalendarComponent},
+  {path: 'add-customer', component: AddCustomerComponent},
+  {path: 'customers', component: CustomersComponent},
+  {path: 'repairs', component: RepairsComponent},
+  {path: 'reservations', component: EventsComponent}
 ];
 
 @NgModule({

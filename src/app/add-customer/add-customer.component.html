@@ -1,0 +1,98 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title class="mat-card-header">Registration Form</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card-header>
+        <mat-card-subtitle  class="mat-card-subtitle">Customer</mat-card-subtitle>
+      </mat-card-header>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="First name" formControlName="name">
+            <mat-error *ngIf="addressForm.controls['name'].hasError('required')">
+              First name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Last name" formControlName="surname">
+            <mat-error *ngIf="addressForm.controls['surname'].hasError('required')">
+              Last name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Telephone number" formControlName="telNumber">
+            <mat-error *ngIf="addressForm.controls['telNumber'].hasError('required')">
+              Telephone number is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Email address" formControlName="email">
+            <mat-error *ngIf="addressForm.controls['email'].hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-card-header>
+        <mat-card-subtitle class="mat-card-subtitle">Car</mat-card-subtitle>
+      </mat-card-header>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Car brand" formControlName="brand">
+            <mat-error *ngIf="addressForm.controls['brand'].hasError('required')">
+              Car brand is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Registration number" formControlName="regNumber">
+            <mat-error *ngIf="addressForm.controls['regNumber'].hasError('required')">
+              Registration number is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="VIN" formControlName="vin">
+            <mat-error *ngIf="addressForm.controls['vin'].hasError('required')">
+              VIN is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Mileage" formControlName="mileage">
+            <mat-error *ngIf="addressForm.controls['mileage'].hasError('required')">
+              Mileage is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!addressForm.valid">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
