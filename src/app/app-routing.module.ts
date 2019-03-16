@@ -13,6 +13,7 @@ import {CustomersComponent} from './customers/customers.component';
 import {RepairsComponent} from './repairs/repairs.component';
 import {EventsComponent} from './events/events.component';
 import {AddReservationComponent} from './add-reservation/add-reservation.component';
+import {CustomerDetailComponent} from './customers/customer-detail/customer-detail.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'add-customer', component: AddCustomerComponent},
   {path: 'add-reservation', component: AddReservationComponent},
   {path: 'customers', component: CustomersComponent},
+  {path: 'customers/:id', component: CustomerDetailComponent},
   {path: 'repairs', component: RepairsComponent},
   {path: 'reservations', component: EventsComponent}
 ];

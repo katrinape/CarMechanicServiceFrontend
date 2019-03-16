@@ -13,4 +13,5 @@ export class Customer {
     this.telNumber = telNumber;
     this.email = email;
   }
+
 }

@@ -42,8 +42,8 @@
         <button mat-raised-button matTooltip="Edit Customer" (click)="openEditDialog(row)">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-raised-button matTooltip="Show Cars">
-          <mat-icon>directions_car</mat-icon>
+        <button mat-raised-button matTooltip="Show Customer Details" routerLink="/customers/{{row.id}}">
+          <mat-icon>person</mat-icon>
         </button>
         <button mat-raised-button matTooltip="Delete Customer" (click)="openDeleteDialog(row.id)">
           <mat-icon>delete</mat-icon>

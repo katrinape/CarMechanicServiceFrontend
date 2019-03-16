@@ -4,24 +4,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatCardModule,
-  MatCommonModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule, MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSortModule, MatStepperModule, MatTableModule,
-  MatToolbarModule, MatTooltipModule, MatTreeModule
+  MatAutocompleteModule, MatButtonModule, MatCardModule, MatCommonModule, MatDatepickerModule,
+  MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule,
+  MatNativeDateModule, MatPaginatorModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule,
+  MatSortModule, MatStepperModule, MatTableModule, MatToolbarModule, MatTooltipModule, MatTreeModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -45,6 +31,7 @@ import {EventsComponent} from './events/events.component';
 import {EditDialogComponent} from './customers/edit-dialog/edit-dialog.component';
 import {DeleteDialogComponent} from './customers/delete-dialog/delete-dialog.component';
 import {AddReservationComponent} from './add-reservation/add-reservation.component';
+import {CustomerDetailComponent} from './customers/customer-detail/customer-detail.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +50,8 @@ import {AddReservationComponent} from './add-reservation/add-reservation.compone
     EventsComponent,
     EditDialogComponent,
     DeleteDialogComponent,
-    AddReservationComponent
+    AddReservationComponent,
+    CustomerDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +69,7 @@ import {AddReservationComponent} from './add-reservation/add-reservation.compone
     MatCommonModule,
     MatDatepickerModule,
     MatDialogModule,
+    MatExpansionModule,
     MatNativeDateModule,
     MatIconModule,
     MatInputModule,

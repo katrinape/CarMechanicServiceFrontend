@@ -1,0 +1,95 @@
+<div *ngIf="customer">
+  <mat-card class="card">
+    <mat-card-header>
+      <div mat-card-avatar><mat-icon>person</mat-icon></div>
+      <mat-card-title>{{customer.name}} {{customer.surname}}</mat-card-title>
+      <mat-card-subtitle>Email: {{customer.email}}</mat-card-subtitle>
+      <mat-card-subtitle>Tel: {{customer.telNumber}}</mat-card-subtitle>
+    </mat-card-header><!-- header -->
+
+    <mat-card-content>
+      <mat-accordion class="example-headers-align">
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Personal data
+            </mat-panel-title>
+            <mat-panel-description>
+              Edit customer personal data
+              <mat-icon>account_circle</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <form [formGroup]="customerForm" novalidate (ngSubmit)="customerFormSubmit()">
+            <mat-form-field>
+              <input matInput type="text" placeholder="First name" formControlName="name">
+              <mat-error></mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="text" placeholder="Last name" formControlName="surname">
+              <mat-error></mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="text" placeholder="Telephone number" formControlName="telNumber">
+              <mat-error></mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="text" placeholder="Email address" formControlName="email">
+              <mat-error></mat-error>
+            </mat-form-field>
+            <mat-action-row>
+              <button mat-raised-button color="primary" type="submit" [disabled]="!customerForm.valid">Submit</button>
+            </mat-action-row>
+          </form>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Reservations
+            </mat-panel-title>
+            <mat-panel-description>
+              Add new reservation
+              <mat-icon>build</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-form-field>
+            <input matInput placeholder="Country">
+          </mat-form-field>
+
+          <mat-action-row>
+
+          </mat-action-row>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Cars
+            </mat-panel-title>
+            <mat-panel-description>
+              Add a car
+              <mat-icon>drive_eta</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-form-field>
+            <input matInput placeholder="Date" [matDatepicker]="picker" (focus)="picker.open()" readonly>
+          </mat-form-field>
+          <mat-datepicker #picker></mat-datepicker>
+
+          <mat-action-row>
+
+          </mat-action-row>
+        </mat-expansion-panel>
+
+      </mat-accordion>
+    </mat-card-content><!-- content -->
+
+    <mat-card-actions>
+      <button mat-button (click)="goBack()">Go Back</button>
+    </mat-card-actions><!-- actions -->
+  </mat-card>
+</div>
+
