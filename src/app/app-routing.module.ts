@@ -12,6 +12,7 @@ import {AddCustomerComponent} from './add-customer/add-customer.component';
 import {CustomersComponent} from './customers/customers.component';
 import {RepairsComponent} from './repairs/repairs.component';
 import {EventsComponent} from './events/events.component';
+import {AddReservationComponent} from './add-reservation/add-reservation.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'terms', component: TermsComponent},
   {path: 'calendar', component: CalendarComponent},
   {path: 'add-customer', component: AddCustomerComponent},
+  {path: 'add-reservation', component: AddReservationComponent},
   {path: 'customers', component: CustomersComponent},
   {path: 'repairs', component: RepairsComponent},
   {path: 'reservations', component: EventsComponent}

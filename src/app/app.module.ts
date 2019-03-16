@@ -4,22 +4,24 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {
-  MatIconModule,
-  MatListModule,
-  MatNativeDateModule,
-  MatSidenavModule,
-  MatToolbarModule,
+  MatAutocompleteModule,
   MatButtonModule,
-  MatGridListModule,
   MatCardModule,
+  MatCommonModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule, MatListModule,
   MatMenuModule,
-  MatTableModule,
+  MatNativeDateModule,
   MatPaginatorModule,
-  MatSortModule,
-  MatTreeModule,
-  MatInputModule,
+  MatRadioModule,
+  MatRippleModule,
   MatSelectModule,
-  MatRadioModule, MatCommonModule, MatTooltipModule, MatRippleModule, MatDialogModule
+  MatSidenavModule,
+  MatSortModule, MatStepperModule, MatTableModule,
+  MatToolbarModule, MatTooltipModule, MatTreeModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -40,8 +42,9 @@ import {AddCustomerComponent} from './add-customer/add-customer.component';
 import {CustomersComponent} from './customers/customers.component';
 import {RepairsComponent} from './repairs/repairs.component';
 import {EventsComponent} from './events/events.component';
-import { EditDialogComponent } from './customers/edit-dialog/edit-dialog.component';
-import { DeleteDialogComponent } from './customers/delete-dialog/delete-dialog.component';
+import {EditDialogComponent} from './customers/edit-dialog/edit-dialog.component';
+import {DeleteDialogComponent} from './customers/delete-dialog/delete-dialog.component';
+import {AddReservationComponent} from './add-reservation/add-reservation.component';
 
 @NgModule({
   declarations: [
@@ -59,39 +62,42 @@ import { DeleteDialogComponent } from './customers/delete-dialog/delete-dialog.c
     RepairsComponent,
     EventsComponent,
     EditDialogComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    AddReservationComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CommonModule,
+    AppRoutingModule,
+    DragDropModule,
     FormsModule,
     HttpClientModule,
-    MatNativeDateModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatListModule,
     LayoutModule,
+    MatAutocompleteModule,
     MatButtonModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule,
-    DragDropModule,
+    MatCommonModule,
+    MatDatepickerModule,
     MatDialogModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatTreeModule,
+    MatNativeDateModule,
+    MatIconModule,
     MatInputModule,
-    MatSelectModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatMenuModule,
+    MatPaginatorModule,
     MatRadioModule,
     MatRippleModule,
+    MatSelectModule,
+    MatSortModule,
+    MatStepperModule,
+    MatTableModule,
     MatTooltipModule,
-    MatCommonModule,
-    CommonModule,
-    FormsModule,
+    MatTreeModule,
+    ReactiveFormsModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory

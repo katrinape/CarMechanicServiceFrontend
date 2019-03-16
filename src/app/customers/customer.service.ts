@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Customer} from './customer';
 import {CarItem} from '../cars/car-item';
+import {EventItem} from '../events/event-item';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,11 @@ export class CustomerService {
   addCarToCustomer(car: CarItem, id: number): Observable<{}> {
     const url = `${this.customersUrl}/${id}/cars`;
     return this.http.post(url, car, this.options);
+  }
+
+  addReservationToCustomer(event: EventItem, id: number): Observable<{}> {
+    const url = `${this.customersUrl}/${id}/reservations`;
+    return this.http.post(url, event, this.options);
   }
 
   updateCustomer(customer: Customer): Observable<Customer> {
