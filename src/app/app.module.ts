@@ -32,6 +32,9 @@ import {EditDialogComponent} from './customers/edit-dialog/edit-dialog.component
 import {DeleteDialogComponent} from './customers/delete-dialog/delete-dialog.component';
 import {AddReservationComponent} from './add-reservation/add-reservation.component';
 import {CustomerDetailComponent} from './customers/customer-detail/customer-detail.component';
+import {TextFieldModule} from '@angular/cdk/text-field';
+import { CustomerCarsComponent } from './customers/customer-cars/customer-cars.component';
+import { CustomerReservationsComponent } from './customers/customer-reservations/customer-reservations.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,9 @@ import {CustomerDetailComponent} from './customers/customer-detail/customer-deta
     EditDialogComponent,
     DeleteDialogComponent,
     AddReservationComponent,
-    CustomerDetailComponent
+    CustomerDetailComponent,
+    CustomerCarsComponent,
+    CustomerReservationsComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +92,7 @@ import {CustomerDetailComponent} from './customers/customer-detail/customer-deta
     MatTooltipModule,
     MatTreeModule,
     ReactiveFormsModule,
+    TextFieldModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory

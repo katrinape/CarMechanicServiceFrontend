@@ -40,6 +40,16 @@ export class CustomerService {
     return this.http.post(url, event, this.options);
   }
 
+  getCustomerReservations(id: number): Observable<EventItem[]> {
+    const url = `${this.customersUrl}/${id}/reservations`;
+    return this.http.get<EventItem[]>(url);
+  }
+
+  getCustomerCars(id: number): Observable<CarItem[]> {
+    const url = `${this.customersUrl}/${id}/cars`;
+    return this.http.get<CarItem[]>(url);
+  }
+
   updateCustomer(customer: Customer): Observable<Customer> {
     return this.http.patch<Customer>(this.customersUrl, customer, this.options);
   }

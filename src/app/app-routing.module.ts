@@ -14,6 +14,8 @@ import {RepairsComponent} from './repairs/repairs.component';
 import {EventsComponent} from './events/events.component';
 import {AddReservationComponent} from './add-reservation/add-reservation.component';
 import {CustomerDetailComponent} from './customers/customer-detail/customer-detail.component';
+import {CustomerReservationsComponent} from './customers/customer-reservations/customer-reservations.component';
+import {CustomerCarsComponent} from './customers/customer-cars/customer-cars.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
@@ -28,6 +30,8 @@ const routes: Routes = [
   {path: 'add-reservation', component: AddReservationComponent},
   {path: 'customers', component: CustomersComponent},
   {path: 'customers/:id', component: CustomerDetailComponent},
+  {path: 'customers/:id/reservations', component: CustomerReservationsComponent},
+  {path: 'customers/:id/cars', component: CustomerCarsComponent},
   {path: 'repairs', component: RepairsComponent},
   {path: 'reservations', component: EventsComponent}
 ];
