@@ -1,5 +1,5 @@
 mat-card {
-  max-width: 800px;
+  max-width: 90%;
   margin: 50px;
 }
 
@@ -15,4 +15,10 @@ mat-form-field {
 .mat-expansion-panel-header-description {
   justify-content: space-between;
   align-items: center;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
 }

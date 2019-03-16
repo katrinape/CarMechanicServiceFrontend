@@ -1,8 +1,28 @@
-<div *ngIf="reservations">
+<div *ngIf="reservations" class="grid-container">
+  <h1 class="mat-h1">Cars</h1>
+  <mat-grid-list cols="2" rowHeight="3:1">
+    <mat-grid-tile *ngFor="let reservation of reservations" [colspan]="1" [rowspan]="1">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            {{reservation.title}}
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Description: {{reservation.description}}</p>
+          <p>Date: {{reservation.start}}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 
-<p>
-  customer-reservations works!
-</p>
-<button (click)="goBack()" >go back</button>
+<button mat-raised-button  (click)="goBack()" >go back</button>
 
 </div>
