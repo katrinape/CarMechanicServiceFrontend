@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {CustomerService} from '../customer.service';
 import {Customer} from '../customer';
@@ -25,6 +25,7 @@ export class CustomerDetailComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
     private dateAdapter: DateAdapter<Date>,
     private customerService: CustomerService,
     private location: Location) {
@@ -86,7 +87,7 @@ export class CustomerDetailComponent implements OnInit {
       this.reservationForm.controls['description'].value
     );
     this.customerService.addReservationToCustomer(reservation, this.customer.id).subscribe(
-      res => this.goBack(),
+      res => this.router.navigate([`customers/${this.customer.id}/reservations`]),
       error1 => console.log(error1)
     );
   }
@@ -99,10 +100,7 @@ export class CustomerDetailComponent implements OnInit {
       this.addCarForm.controls['mileage'].value,
     );
     this.customerService.addCarToCustomer(car, this.customer.id).subscribe(
-      res => {
-        console.log(res);
-        this.goBack();
-      },
+      res => this.router.navigate([`customers/${this.customer.id}/cars`]),
       error1 => console.log(error1)
     )
   }

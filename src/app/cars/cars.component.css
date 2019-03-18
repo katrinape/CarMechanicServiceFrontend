@@ -6,3 +6,8 @@
   font-size: 14px;
   width: 100%;
 }
+
+.mat-elevation-z8 {
+  width: 95%;
+  margin: auto;
+}

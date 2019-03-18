@@ -28,13 +28,9 @@ export class CustomersComponent implements OnInit {
     this.dataSource = new CustomersDataSource(this.paginator, this.sort, this.customerService);
   }
 
-  // applyFilter(filterValue: string) {
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
-
   openEditDialog(customer): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      width: '400px',
+      // width: '400px',
       data: {
         customer: customer,
         id: customer.id,

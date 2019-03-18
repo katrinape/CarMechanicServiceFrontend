@@ -7,10 +7,15 @@ button {
 }
 
 .mat-row:hover {
-  background: #f5f5f5;
+  background: rgba(0,0,0,.1);
 }
 
 .mat-form-field {
   font-size: 14px;
   width: 100%;
+}
+
+.mat-elevation-z8 {
+  width: 95%;
+  margin: auto;
 }
