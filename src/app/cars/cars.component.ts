@@ -15,7 +15,7 @@ export class CarsComponent implements OnInit {
   dataSource: CarsDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'brand', 'regNumber', 'vin', 'mileage'];
+  displayedColumns = ['id', 'brand', 'regNumber', 'vin', 'mileage', 'owner'];
 
   constructor(private carService: CarService) {}
 

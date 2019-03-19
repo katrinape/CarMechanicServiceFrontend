@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {EventItem} from '../events/event-item';
 import * as $ from 'jquery';
 import 'fullcalendar';
-import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-calendar',
@@ -10,9 +12,9 @@ import {HttpClient} from '@angular/common/http';
 })
 export class CalendarComponent implements OnInit {
 
-  events: Event[];
+  events: EventItem[];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   createEvent(event: Object) {
@@ -25,11 +27,7 @@ export class CalendarComponent implements OnInit {
       eventSources: ['http://localhost:8080/reservations'],
       locale: 'pl',
       aspectRatio: 2,
-      header: {
-        left: 'month,agendaWeek,agendaDay today',
-        center: 'title',
-        right: 'prev,next'
-      },
+      header: {left: 'month,agendaWeek,agendaDay today', center: 'title', right: 'prev,next'},
       defaultView: 'month',
       selectable: true,
       timeFormat: 'H:mm',
@@ -38,38 +36,19 @@ export class CalendarComponent implements OnInit {
       slotDuration: '01:00:00',
       minTime: '06:00:00',
       maxTime: '22:00:00',
-      firstDay: 1,
-      dayClick: date => {
-        let eventTitle = prompt('Co mam dodać?');
-        if (eventTitle !== null && eventTitle.trim().length > 1) {
-          $('#calendar').fullCalendar(
-            'renderEvent', {
-              title: eventTitle,
-              start: date.toDate(),
-              allDay: true
-            }, true
-          );
-        }
-        this.createEvent({
-          title: "Naprawa zawieszenia",
-          start: "2019-04-15",
-          description: "godz 15"
-        });
-      },
-      eventClick: event => alert(event.title + ' ' + event.description),
-      eventRender: (event, element) => { element.css({
-          fontSize: '1.5rem',
-          background: 'white',
-          padding: '5px',
-        });
-      },
-      eventReceive: event1 => {
-        this.http.post('http://localhost:8080/reservations', event1);
-        console.log(event1)
-      },
-      eventTextColor: '#000',
       contentHeight: 'auto',
-      editable: true
+      editable: false,
+      firstDay: 1,
+      dayClick: date => this.router.navigateByUrl('/add-reservation'),
+      eventClick: event => {this.router.navigate(['/reservations']);},
+      eventRender: (event, element) => { element.css({
+          fontSize: '1rem',
+          background: 'rgba(0,0,0,0)',
+          borderColor: 'white',
+          cursor: 'pointer',
+          padding: '5px'
+        });
+      }
     });
   }
 }

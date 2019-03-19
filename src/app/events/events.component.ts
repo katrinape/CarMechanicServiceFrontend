@@ -14,7 +14,7 @@ export class EventsComponent implements OnInit {
   dataSource: EventsDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'title', 'start', 'description'];
+  displayedColumns = ['id', 'title', 'start', 'description', 'customer'];
 
   constructor(private eventService: EventService) {}
 

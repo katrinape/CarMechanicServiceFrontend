@@ -76,6 +76,8 @@ export class CarsDataSource extends DataSource<CarItem> {
           return compare(a.regNumber, b.regNumber, isAsc);
         case 'vin':
           return compare(a.vin, b.vin, isAsc);
+        case 'owner':
+          return compare(a.customerEntity, b.customerEntity, isAsc);
         case 'mileage':
           return compare(+a.mileage, +b.mileage, isAsc);
         case 'id':

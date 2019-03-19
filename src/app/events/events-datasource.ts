@@ -76,6 +76,8 @@ export class EventsDataSource extends DataSource<EventItem> {
           return compare(a.description, b.description, isAsc);
         case 'start':
           return compare(a.start, b.start, isAsc);
+        case 'customer':
+          return compare(a.customerEntity, b.customerEntity, isAsc);
         case 'id':
           return compare(+a.id, +b.id, isAsc);
         default:

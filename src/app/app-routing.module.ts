@@ -18,6 +18,7 @@ import {CustomerReservationsComponent} from './customers/customer-reservations/c
 import {CustomerCarsComponent} from './customers/customer-cars/customer-cars.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'customers', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'dragdrop', component: DragdropComponent},
   {path: 'table', component: TableComponent},
