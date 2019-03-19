@@ -16,6 +16,7 @@ import {AddReservationComponent} from './add-reservation/add-reservation.compone
 import {CustomerDetailComponent} from './customers/customer-detail/customer-detail.component';
 import {CustomerReservationsComponent} from './customers/customer-reservations/customer-reservations.component';
 import {CustomerCarsComponent} from './customers/customer-cars/customer-cars.component';
+import {MaterialCalendarComponent} from './material-calendar/material-calendar.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'customers', pathMatch: 'full'},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'cars', component: CarsComponent},
   {path: 'terms', component: TermsComponent},
   {path: 'calendar', component: CalendarComponent},
+  {path: 'material-calendar', component: MaterialCalendarComponent},
   {path: 'add-customer', component: AddCustomerComponent},
   {path: 'add-reservation', component: AddReservationComponent},
   {path: 'customers', component: CustomersComponent},

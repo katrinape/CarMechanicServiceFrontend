@@ -1,0 +1,14 @@
+.bg-pink {
+  background-color: hotpink !important;
+}
+
+mwl-calendar-month-cell.bg-pink:hover {
+  opacity: .8;
+}
+
+.fill-height {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}

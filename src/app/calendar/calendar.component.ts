@@ -43,7 +43,7 @@ export class CalendarComponent implements OnInit {
       eventClick: event => {this.router.navigate(['/reservations']);},
       eventRender: (event, element) => { element.css({
           fontSize: '1rem',
-          background: 'rgba(0,0,0,0)',
+          background: 'rgba(0,0,0,0.5)',
           borderColor: 'white',
           cursor: 'pointer',
           padding: '5px'

@@ -21,7 +21,8 @@ import {AddressFormComponent} from './address-form/address-form.component';
 import {CarsComponent} from './cars/cars.component';
 import {TermsComponent} from './terms/terms.component';
 import {CalendarComponent} from './calendar/calendar.component';
-import {CommonModule} from '@angular/common';
+import {CommonModule, registerLocaleData} from '@angular/common';
+import localePl from '@angular/common/locales/pl';
 import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import {AddCustomerComponent} from './add-customer/add-customer.component';
@@ -35,6 +36,10 @@ import {CustomerDetailComponent} from './customers/customer-detail/customer-deta
 import {TextFieldModule} from '@angular/cdk/text-field';
 import { CustomerCarsComponent } from './customers/customer-cars/customer-cars.component';
 import { CustomerReservationsComponent } from './customers/customer-reservations/customer-reservations.component';
+import { CalendarHeaderComponent } from './material-calendar/calendar-header/calendar-header.component';
+import {MaterialCalendarComponent} from './material-calendar/material-calendar.component';
+
+registerLocaleData(localePl);
 
 @NgModule({
   declarations: [
@@ -56,7 +61,9 @@ import { CustomerReservationsComponent } from './customers/customer-reservations
     AddReservationComponent,
     CustomerDetailComponent,
     CustomerCarsComponent,
-    CustomerReservationsComponent
+    CustomerReservationsComponent,
+    MaterialCalendarComponent,
+    CalendarHeaderComponent
   ],
   imports: [
     BrowserModule,
