@@ -12,14 +12,8 @@ import {
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {LayoutModule} from '@angular/cdk/layout';
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {DragdropComponent} from './dragdrop/dragdrop.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {TableComponent} from './table/table.component';
-import {TreeComponent} from './tree/tree.component';
-import {AddressFormComponent} from './address-form/address-form.component';
 import {CarsComponent} from './cars/cars.component';
-import {TermsComponent} from './terms/terms.component';
 import {CalendarComponent} from './calendar/calendar.component';
 import {CommonModule, registerLocaleData} from '@angular/common';
 import localePl from '@angular/common/locales/pl';
@@ -44,13 +38,7 @@ registerLocaleData(localePl);
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    DragdropComponent,
-    TableComponent,
-    TreeComponent,
-    AddressFormComponent,
     CarsComponent,
-    TermsComponent,
     CalendarComponent,
     AddCustomerComponent,
     CustomersComponent,
