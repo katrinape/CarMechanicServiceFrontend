@@ -6,7 +6,7 @@
         <input matInput placeholder="Reservation title" formControlName="title" required>
       </mat-form-field>
       <mat-form-field>
-        <textarea matInput placeholder="Reservation description" formControlName="description" rows="5" required></textarea>
+        <textarea matInput placeholder="Reservation description" formControlName="description"  cdkTextareaAutosize cdkAutosizeMinRows="1" required></textarea>
       </mat-form-field>
       <mat-form-field>
         <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Repair date" formControlName="start">

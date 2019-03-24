@@ -81,9 +81,13 @@ export class CustomerDetailComponent implements OnInit {
   }
 
   reservationFormSubmit() {
+    let date: Date = new Date(this.reservationForm.controls['start'].value);
+    let year: string = date.getFullYear() + '';
+    let month: string = date.getMonth() + 1 + '';
+    let day: string = date.getDay() + '';
     let reservation: EventItem = new EventItem(
       this.reservationForm.controls['title'].value,
-      this.reservationForm.controls['start'].value,
+      year + '-' + (month.length > 1 ? month : '0' + month) + '-' + (day.length > 1 ? day : '0' + day),
       this.reservationForm.controls['description'].value
     );
     this.customerService.addReservationToCustomer(reservation, this.customer.id).subscribe(
@@ -102,7 +106,7 @@ export class CustomerDetailComponent implements OnInit {
     this.customerService.addCarToCustomer(car, this.customer.id).subscribe(
       res => this.router.navigate([`customers/${this.customer.id}/cars`]),
       error1 => console.log(error1)
-    )
+    );
   }
 
   myFilter = (d: Date): boolean => {

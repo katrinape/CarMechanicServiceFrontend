@@ -56,9 +56,13 @@ export class AddReservationComponent implements OnInit {
   }
 
   onSubmit(){
+    let date: Date = new Date(this.firstFormGroup.controls['start'].value);
+    let year: string = date.getFullYear() + '';
+    let month: string = date.getMonth() + 1 + '';
+    let day: string = date.getDay() + '';
     let eventItem: EventItem = new EventItem(
       this.firstFormGroup.controls['title'].value,
-      this.firstFormGroup.controls['start'].value,
+      year + '-' + (month.length > 1 ? month : '0' + month) + '-' + (day.length > 1 ? day : '0' + day),
       this.firstFormGroup.controls['description'].value
     );
     let customer: Customer = this.secondFormGroup.controls['customer'].value;
