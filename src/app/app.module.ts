@@ -14,7 +14,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {LayoutModule} from '@angular/cdk/layout';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CarsComponent} from './cars/cars.component';
-import {CalendarComponent} from './calendar/calendar.component';
 import {CommonModule, registerLocaleData} from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import {CalendarModule, DateAdapter} from 'angular-calendar';
@@ -39,7 +38,6 @@ registerLocaleData(localePl);
   declarations: [
     AppComponent,
     CarsComponent,
-    CalendarComponent,
     AddCustomerComponent,
     CustomersComponent,
     RepairsComponent,

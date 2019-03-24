@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {CarsComponent} from './cars/cars.component';
-import {CalendarComponent} from './calendar/calendar.component';
 import {AddCustomerComponent} from './add-customer/add-customer.component';
 import {CustomersComponent} from './customers/customers.component';
 import {RepairsComponent} from './repairs/repairs.component';
@@ -15,8 +14,7 @@ import {MaterialCalendarComponent} from './material-calendar/material-calendar.c
 const routes: Routes = [
   {path: '', redirectTo: 'customers', pathMatch: 'full'},
   {path: 'cars', component: CarsComponent},
-  {path: 'calendar', component: CalendarComponent},
-  {path: 'material-calendar', component: MaterialCalendarComponent},
+  {path: 'calendar', component: MaterialCalendarComponent},
   {path: 'add-customer', component: AddCustomerComponent},
   {path: 'add-reservation', component: AddReservationComponent},
   {path: 'customers', component: CustomersComponent},
