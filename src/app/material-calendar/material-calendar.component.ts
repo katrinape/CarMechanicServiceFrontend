@@ -27,7 +27,7 @@ export class MaterialCalendarComponent implements OnInit {
   activeDayIsOpen: boolean;
   refresh: Subject<any> = new Subject();
   clickedDate: Date;
-  locale: string = 'pl';
+  locale: string = 'en';
   // events: CalendarEvent[] = [
   //   {
   //     title: 'Editable event',
@@ -108,7 +108,7 @@ export class MaterialCalendarComponent implements OnInit {
                     label: '<i class="fas fa-user-alt" title="Show customer"></i>',
                     cssClass: 'edit-usr',
                     onClick: ({event}: { event: CalendarEvent }): void => {
-                      console.log('Show customer');
+                      console.log('Show customer', event);
                       this.router.navigate([`customers/${res.customerEntity.id}`]).finally()
                     }
                   }
