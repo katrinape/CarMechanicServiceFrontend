@@ -10,6 +10,7 @@ import {CustomerDetailComponent} from './customers/customer-detail/customer-deta
 import {CustomerReservationsComponent} from './customers/customer-reservations/customer-reservations.component';
 import {CustomerCarsComponent} from './customers/customer-cars/customer-cars.component';
 import {MaterialCalendarComponent} from './material-calendar/material-calendar.component';
+import {ReservationsComponent} from './reservations/reservations.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'customers', pathMatch: 'full'},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'customers/:id/reservations', component: CustomerReservationsComponent},
   {path: 'customers/:id/cars', component: CustomerCarsComponent},
   {path: 'repairs', component: RepairsComponent},
-  {path: 'reservations', component: EventsComponent}
+  {path: 'reservations', component: EventsComponent},
+  {path: 'res', component: ReservationsComponent}
 ];
 
 @NgModule({
