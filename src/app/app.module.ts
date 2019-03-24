@@ -4,7 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {
-  MatAutocompleteModule, MatButtonModule, MatCardModule, MatCommonModule, MatDatepickerModule,
+  MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCommonModule, MatDatepickerModule,
   MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule,
   MatNativeDateModule, MatPaginatorModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule,
   MatSortModule, MatStepperModule, MatTableModule, MatToolbarModule, MatTooltipModule, MatTreeModule
@@ -76,6 +76,7 @@ registerLocaleData(localePl);
     LayoutModule,
     MatAutocompleteModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatGridListModule,
     MatCardModule,
     MatCommonModule,

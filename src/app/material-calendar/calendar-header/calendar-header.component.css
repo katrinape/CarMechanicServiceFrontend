@@ -1,4 +1,6 @@
-.text-center {
+h3.text-center {
   flex: 1 1 auto;
   text-align: center;
+  text-transform: capitalize;
+  font-size: 2rem;
 }

@@ -1,13 +1,45 @@
 <mat-toolbar>
-  <button mat-raised-button mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
-          (viewDateChange)="viewDateChange.next(viewDate)">Previous</button>
-  <button mat-raised-button mwlCalendarToday [(viewDate)]="viewDate"
+  <button mat-raised-button
+          mwlCalendarPreviousView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="viewDateChange.next(viewDate)">
+    <mat-icon>arrow_left</mat-icon>
+  </button>
+  <button mat-raised-button mwlCalendarToday
+          [(viewDate)]="viewDate"
           (viewDateChange)="viewDateChange.next(viewDate)">Today</button>
-  <button mat-raised-button mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
-          (viewDateChange)="viewDateChange.next(viewDate)">Next</button>
+  <button mat-raised-button mwlCalendarNextView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="viewDateChange.next(viewDate)">
+    <mat-icon>arrow_right</mat-icon>
+  </button>
   <h3 class="text-center">{{ viewDate | calendarDate: view + 'ViewTitle':locale }}</h3>
-  <button mat-raised-button (click)="viewChange.emit('month')" [class.active]="view === 'month'">Month</button>
-  <button mat-raised-button (click)="viewChange.emit('week')" [class.active]="view === 'week'">Week</button>
-  <button mat-raised-button (click)="viewChange.emit('day')" [class.active]="view === 'day'">Day</button>
+  <button mat-raised-button
+          (click)="viewChange.emit('month')"
+          [class.active]="view === 'month'">Month</button>
+  <button mat-raised-button
+          (click)="viewChange.emit('week')"
+          [class.active]="view === 'week'">Week</button>
+  <button mat-raised-button
+          (click)="viewChange.emit('day')"
+          [class.active]="view === 'day'">Day</button>
 </mat-toolbar>
+
+<!--<mat-button-toggle-group>-->
+  <!--<mat-button-toggle mwlCalendarPreviousView-->
+                     <!--[view]="view"-->
+                     <!--[(viewDate)]="viewDate"-->
+                     <!--(viewDateChange)="viewDateChange.next(viewDate)"><mat-icon>arrow_left</mat-icon>-->
+  <!--</mat-button-toggle>-->
+  <!--<mat-button-toggle mwlCalendarToday-->
+                     <!--[(viewDate)]="viewDate"-->
+                     <!--(viewDateChange)="viewDateChange.next(viewDate)">Today</mat-button-toggle>-->
+  <!--<mat-button-toggle mwlCalendarNextView-->
+                     <!--[view]="view"-->
+                     <!--[(viewDate)]="viewDate"-->
+                     <!--(viewDateChange)="viewDateChange.next(viewDate)"><mat-icon>arrow_right</mat-icon>-->
+  <!--</mat-button-toggle>-->
+<!--</mat-button-toggle-group>-->
 

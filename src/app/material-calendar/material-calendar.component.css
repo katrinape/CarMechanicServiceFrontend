@@ -12,3 +12,39 @@ mwl-calendar-month-cell.bg-pink:hover {
   flex-direction: column;
   align-items: stretch;
 }
+
+span.cal-event-title.ng-star-inserted,
+.edit-usr,
+.edit-res {
+  font-size: 1.4rem;
+  padding: 7px;
+  color: #cccccc;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.edit-res {
+  color: greenyellow;
+}
+
+.edit-usr {
+  color: aqua;
+}
+
+.edit-res:hover {
+  color: greenyellow;
+  opacity: .7;
+}
+
+.edit-usr:hover {
+  color: aqua;
+  opacity: .7;
+}
+
+span.cal-event-title.ng-star-inserted:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/*div.cal-open-day-events.ng-star-inserted {*/
+  /*background-color: white;*/
+/*}*/
