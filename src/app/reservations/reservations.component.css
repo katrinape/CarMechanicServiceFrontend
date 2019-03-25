@@ -3,6 +3,36 @@ table {
 }
 
 .mat-form-field {
-  font-size: 14px;
+  font-size: 18px;
   width: 100%;
+  padding: 24px 24px 0;
+  background-color: #fff;
 }
+
+tr.detail-row {
+  height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+  background: #f5f5f5;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background: #efefef;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.mat-card {
+  width: 33%;
+  border: 1px solid #cccccc;
+  margin: 0 10px 20px;
+}
+

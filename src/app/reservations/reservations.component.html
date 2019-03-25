@@ -1,46 +1,76 @@
-<mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field>
+<div class="mat-elevation-z8">
 
-<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+  <mat-form-field>
+    <mat-icon color="primary" matPrefix>search</mat-icon>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
 
-  <!-- Id Column -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  </ng-container>
+  <table mat-table matSort [dataSource]="dataSource" multiTemplateDataRows>
 
-  <!-- Title Column -->
-  <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
-    <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-  </ng-container>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id</th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
 
-  <!-- Start Column -->
-  <ng-container matColumnDef="start">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Start </th>
-    <td mat-cell *matCellDef="let element"> {{element.start}} </td>
-  </ng-container>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Title</th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
 
-  <!-- Description Column -->
-  <ng-container matColumnDef="description">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
-    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-  </ng-container>
+    <ng-container matColumnDef="start">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Start</th>
+      <td mat-cell *matCellDef="let element"> {{element.start}} </td>
+    </ng-container>
 
-  <!-- Customer Column -->
-  <ng-container matColumnDef="customer">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer </th>
-    <td mat-cell *matCellDef="let element"> {{element.customerEntity.name}} {{element.customerEntity.surname}} </td>
-  </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+    <ng-container matColumnDef="customer">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer</th>
+      <td mat-cell *matCellDef="let element">{{element.customerEntity.name}} {{element.customerEntity.surname}}</td>
+    </ng-container>
 
-<mat-paginator #paginator
-               [length]="paginator.length"
-               [pageIndex]="0"
-               [pageSize]="50"
-               [pageSizeOptions]="[10, 25, 50]">
-</mat-paginator>
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+        <div class="element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <mat-card>
+            <mat-card-header>
+              <div matCardAvatar><mat-icon color="accent">person</mat-icon></div>
+              <mat-card-title>{{element.customerEntity.name}} {{element.customerEntity.surname}}</mat-card-title>
+              <mat-card-subtitle>{{element.customerEntity.telNumber}}</mat-card-subtitle>
+              <mat-card-subtitle>{{element.customerEntity.email}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions align="end">
+              <button mat-raised-button>Go to customer details</button>
+            </mat-card-actions>
+          </mat-card>
+
+          <mat-card >
+            <mat-card-header>
+              <div matCardAvatar><mat-icon color="accent">calendar_today</mat-icon></div>
+              <mat-card-title>{{element.title}}</mat-card-title>
+              <mat-card-subtitle>{{element.start}}</mat-card-subtitle>
+              <mat-card-subtitle>{{element.description}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions align="end">
+              <button mat-raised-button>Edit reservation details</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="element-row"
+        [class.expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element"></tr>
+    <tr mat-row *matRowDef="let element; columns: ['expandedDetail']" class="detail-row"></tr>
+
+  </table>
+
+  <mat-paginator
+    #paginator [length]="paginator.length" [pageIndex]="0" [pageSize]="50" [pageSizeOptions]="[10, 25, 50]">
+  </mat-paginator>
+</div>
