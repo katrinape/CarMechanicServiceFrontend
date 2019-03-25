@@ -2,6 +2,10 @@
   background-color: hotpink !important;
 }
 
+mwl-calendar-month-cell:hover {
+  box-shadow: 10px 10px 10px -3px rgba(0,0,0,.2);
+}
+
 mwl-calendar-month-cell.bg-pink:hover {
   opacity: .8;
 }

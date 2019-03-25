@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+form {
+  margin: 50px;
+}
+
 .mat-card-header {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -13,16 +17,6 @@
   margin-bottom: 0;
   padding-bottom: 0;
   font-size: 1.45em;
-}
-
-.shipping-card {
-  min-width: 120px;
-  margin: 50px;
-}
-
-.mat-radio-button {
-  display: block;
-  margin: 5px 0;
 }
 
 .row {

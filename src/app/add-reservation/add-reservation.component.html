@@ -1,4 +1,4 @@
-<mat-vertical-stepper [linear]="true" #stepper>
+<mat-vertical-stepper [linear]="true" #stepper class="mat-elevation-z8">
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup" (ngSubmit)="form1()" #formone="ngForm">
       <ng-template matStepLabel>Fill out reservation data</ng-template>
@@ -6,23 +6,32 @@
         <input matInput placeholder="Reservation title" formControlName="title" required>
       </mat-form-field>
       <mat-form-field>
-        <textarea matInput placeholder="Reservation description" formControlName="description"  cdkTextareaAutosize cdkAutosizeMinRows="1" required></textarea>
+        <textarea
+          placeholder="Reservation description"
+          formControlName="description" cdkAutosizeMinRows="1"
+          matInput cdkTextareaAutosize required></textarea>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Repair date" formControlName="start">
+        <input matInput placeholder="Repair date" formControlName="start"
+               [matDatepickerFilter]="myFilter"
+               [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker touchUi [startAt]="startDate"></mat-datepicker>
       </mat-form-field>
-      <div><button mat-button matStepperNext>Next</button></div>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup" (ngSubmit)="form2()" #formtwo="ngForm">
       <ng-template matStepLabel>Choose a customer</ng-template>
       <mat-form-field>
-        <input matInput formControlName="customer" placeholder="Pick one customer" aria-label="Number" [matAutocomplete]="auto" required>
+        <input matInput formControlName="customer" placeholder="Pick one customer" aria-label="Number"
+               [matAutocomplete]="auto" required>
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFun">
-          <mat-option *ngFor="let option of options" [value]="option">{{option.name}} {{option.surname}}</mat-option>
+          <mat-option *ngFor="let option of options"
+                      [value]="option">{{option.name}} {{option.surname}}</mat-option>
         </mat-autocomplete>
       </mat-form-field>
       <div>
