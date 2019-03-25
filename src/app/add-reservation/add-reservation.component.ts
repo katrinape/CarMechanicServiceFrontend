@@ -59,7 +59,7 @@ export class AddReservationComponent implements OnInit {
     let date: Date = new Date(this.firstFormGroup.controls['start'].value);
     let year: string = date.getFullYear() + '';
     let month: string = date.getMonth() + 1 + '';
-    let day: string = date.getDay() + '';
+    let day: string = date.getDate() + '';
     let eventItem: EventItem = new EventItem(
       this.firstFormGroup.controls['title'].value,
       year + '-' + (month.length > 1 ? month : '0' + month) + '-' + (day.length > 1 ? day : '0' + day),
@@ -69,7 +69,7 @@ export class AddReservationComponent implements OnInit {
     this.customerService.addReservationToCustomer(eventItem, customer.id).subscribe(
       res => this.router.navigate(['calendar']),
       error1 => console.log(error1)
-    )
+    );
   }
 
   displayFun(customer: Customer): string {

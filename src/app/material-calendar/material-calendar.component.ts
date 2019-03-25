@@ -1,11 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {
-  CalendarDateFormatter,
-  CalendarEvent,
-  CalendarEventTimesChangedEvent,
-  CalendarMonthViewBeforeRenderEvent,
-  CalendarView
-} from 'angular-calendar';
+import {CalendarDateFormatter, CalendarEvent, CalendarEventTimesChangedEvent,
+  CalendarMonthViewBeforeRenderEvent, CalendarView} from 'angular-calendar';
 import {isSameDay, isSameMonth} from 'date-fns';
 import {Observable, Subject} from 'rxjs';
 import {CustomDateFormatter} from './custom-date-formatter.provider';
@@ -15,7 +10,7 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-material-calendar',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.None,
   templateUrl: './material-calendar.component.html',
   styleUrls: ['./material-calendar.component.css'],
@@ -28,46 +23,6 @@ export class MaterialCalendarComponent implements OnInit {
   refresh: Subject<any> = new Subject();
   clickedDate: Date;
   locale: string = 'en';
-  // events: CalendarEvent[] = [
-  //   {
-  //     title: 'Editable event',
-  //     color: colors.yellow,
-  //     start: new Date(),
-  //     actions: [
-  //       {
-  //         label: '<i class="fa fa-fw fa-pencil"></i>',
-  //         onClick: ({ event }: { event: CalendarEvent }): void => {
-  //           console.log('Edit event', event);
-  //         }
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     title: 'Deletable event',
-  //     color: colors.blue,
-  //     start: new Date(),
-  //     actions: [
-  //       {
-  //         label: '<i class="fa fa-fw fa-times"></i>',
-  //         onClick: ({ event }: { event: CalendarEvent }): void => {
-  //           this.events = this.events.filter(iEvent => iEvent !== event);
-  //           console.log('Event deleted', event);
-  //         }
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     title: 'Non editable and deletable event',
-  //     color: colors.red,
-  //     start: new Date(),
-  //   },
-  //   {
-  //     title: 'Draggable event',
-  //     color: colors.yellow,
-  //     start: new Date(),
-  //     draggable: true
-  //   }
-  // ];
 
   events: Observable<CalendarEvent[]>;
 
@@ -85,6 +40,7 @@ export class MaterialCalendarComponent implements OnInit {
           return res.map(
             res => {
               return {
+                id: res.id,
                 title:
                   res.title + ' - ' +
                   res.customerEntity.name + ' ' +
@@ -98,7 +54,7 @@ export class MaterialCalendarComponent implements OnInit {
                 actions: [
                   {
                     label: '<i class="fas fa-edit" title="Edit reservation"></i>',
-                    cssClass: 'edit-res',
+                    cssClass: 'my-icon',
                     onClick: ({ event }: { event: CalendarEvent }): void => {
                       console.log('Show reservation', event);
                       this.router.navigate([`customers/${res.customerEntity.id}/reservations`]).finally()
@@ -106,10 +62,24 @@ export class MaterialCalendarComponent implements OnInit {
                   },
                   {
                     label: '<i class="fas fa-user-alt" title="Show customer"></i>',
-                    cssClass: 'edit-usr',
+                    cssClass: 'my-icon',
                     onClick: ({event}: { event: CalendarEvent }): void => {
                       console.log('Show customer', event);
                       this.router.navigate([`customers/${res.customerEntity.id}`]).finally()
+                    }
+                  },
+                  {
+                    label: '<i class="fas fa-trash-alt" title="Delete reservation"></i>',
+                    cssClass: 'my-icon',
+                    onClick: ({event}: { event: CalendarEvent }): void => {
+                      console.log('Delete customer', event.id);
+                      this.eventService.deleteEvent(+event.id).subscribe(
+                        res => {
+                          this.fetchEvents();
+                          this.activeDayIsOpen = false;
+                        },
+                        error1 => console.log(error1)
+                      );
                     }
                   }
                 ]
@@ -121,7 +91,6 @@ export class MaterialCalendarComponent implements OnInit {
     )
   }
 
-
   eventTimesChanged({event, newStart, newEnd}: CalendarEventTimesChangedEvent): void {
     event.start = newStart;
     event.end = newEnd;
@@ -132,6 +101,7 @@ export class MaterialCalendarComponent implements OnInit {
     if (isSameMonth(date, this.viewDate)) {
       if ((isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) || events.length === 0) {
         this.activeDayIsOpen = false;
+        this.router.navigateByUrl('add-reservation').finally();
       } else {
         this.activeDayIsOpen = true;
         this.viewDate = date;

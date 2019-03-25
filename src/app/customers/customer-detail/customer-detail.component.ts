@@ -84,7 +84,7 @@ export class CustomerDetailComponent implements OnInit {
     let date: Date = new Date(this.reservationForm.controls['start'].value);
     let year: string = date.getFullYear() + '';
     let month: string = date.getMonth() + 1 + '';
-    let day: string = date.getDay() + '';
+    let day: string = date.getDate() + '';
     let reservation: EventItem = new EventItem(
       this.reservationForm.controls['title'].value,
       year + '-' + (month.length > 1 ? month : '0' + month) + '-' + (day.length > 1 ? day : '0' + day),

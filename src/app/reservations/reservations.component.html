@@ -43,7 +43,8 @@
               <mat-card-subtitle>{{element.customerEntity.email}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-actions align="end">
-              <button mat-raised-button>Go to customer details</button>
+              <button mat-raised-button
+                      routerLink="customers/{{element.customerEntity.id}}">Go to customer details</button>
             </mat-card-actions>
           </mat-card>
 
@@ -55,7 +56,8 @@
               <mat-card-subtitle>{{element.description}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-actions align="end">
-              <button mat-raised-button>Edit reservation details</button>
+              <button mat-raised-button
+                      routerLink="customers/{{element.customerEntity.id}}/reservations">Edit reservation details</button>
             </mat-card-actions>
           </mat-card>
         </div>

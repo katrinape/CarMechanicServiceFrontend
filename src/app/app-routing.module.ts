@@ -13,7 +13,7 @@ import {MaterialCalendarComponent} from './material-calendar/material-calendar.c
 import {ReservationsComponent} from './reservations/reservations.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'customers', pathMatch: 'full'},
+  {path: '', redirectTo: 'calendar', pathMatch: 'full'},
   {path: 'cars', component: CarsComponent},
   {path: 'calendar', component: MaterialCalendarComponent},
   {path: 'add-customer', component: AddCustomerComponent},
@@ -24,7 +24,9 @@ const routes: Routes = [
   {path: 'customers/:id/cars', component: CustomerCarsComponent},
   {path: 'repairs', component: RepairsComponent},
   {path: 'reservations', component: EventsComponent},
-  {path: 'res', component: ReservationsComponent}
+  {path: 'res', component: ReservationsComponent},
+  {path: 'res/customers/:id', redirectTo: 'customers/:id', pathMatch: 'full'},
+  {path: 'res/customers/:id/reservations', redirectTo: 'customers/:id/reservations', pathMatch: 'full'}
 ];
 
 @NgModule({
