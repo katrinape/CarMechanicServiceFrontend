@@ -41,7 +41,8 @@
         <button mat-raised-button matTooltip="Show Customer Details" routerLink="/customers/{{row.id}}">
           <mat-icon>person</mat-icon>
         </button>
-        <button mat-raised-button matTooltip="Delete Customer" (click)="openDeleteDialog(row.id)">
+        <button mat-raised-button matTooltip="Delete Customer"
+                (click)="openDeleteDialog(row.id, row.name+' '+row.surname)">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

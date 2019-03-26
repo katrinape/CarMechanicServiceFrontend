@@ -31,7 +31,7 @@ tr.element-row:not(.expanded-row):active {
 }
 
 .mat-card {
-  width: 33%;
+  width: 50%;
   border: 1px solid #cccccc;
   margin: 0 10px 20px;
 }

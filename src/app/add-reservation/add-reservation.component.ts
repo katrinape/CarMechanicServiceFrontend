@@ -5,7 +5,7 @@ import {MyDateAdapter} from './my-date-adapter';
 import {CustomerService} from '../customers/customer.service';
 import {EventItem} from '../events/event-item';
 import {Customer} from '../customers/customer';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-reservation',
@@ -15,6 +15,7 @@ import {Router} from '@angular/router';
 })
 export class AddReservationComponent implements OnInit {
   startDate = new Date();
+  resDate = '';
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   options: Customer[] = [];
@@ -22,11 +23,16 @@ export class AddReservationComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,
               private dateAdapter: DateAdapter<Date>,
               private customerService: CustomerService,
+              private route: ActivatedRoute,
               private router: Router) {
     this.dateAdapter.setLocale('pl');
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(
+      params => this.resDate = params['resDate'] || '',
+      error1 => console.log(error1)
+    );
     this.customerService.getCustomers().subscribe(
       res => this.options = res,
       error1 => console.log(error1)
@@ -34,10 +40,11 @@ export class AddReservationComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      start: ['', Validators.required]
+      start: [this.resDate, Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
-      customer: ['', Validators.required]
+      customer: ['', [Validators.required]
+      ]
     });
   }
 
@@ -47,15 +54,15 @@ export class AddReservationComponent implements OnInit {
     return day !== 0 && day !== 6 && this.startDate <= d;
   };
 
-  form1(){
+  form1() {
     console.log(this.firstFormGroup.value);
   }
 
-  form2(){
+  form2() {
     console.log(this.secondFormGroup.value);
   }
 
-  onSubmit(){
+  onSubmit() {
     let date: Date = new Date(this.firstFormGroup.controls['start'].value);
     let year: string = date.getFullYear() + '';
     let month: string = date.getMonth() + 1 + '';

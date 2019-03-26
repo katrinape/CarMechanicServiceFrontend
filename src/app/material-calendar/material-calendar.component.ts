@@ -7,6 +7,8 @@ import {CustomDateFormatter} from './custom-date-formatter.provider';
 import {EventService} from '../events/event.service';
 import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
+import {DeleteDialogComponent} from '../customers/delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-material-calendar',
@@ -23,14 +25,35 @@ export class MaterialCalendarComponent implements OnInit {
   refresh: Subject<any> = new Subject();
   clickedDate: Date;
   locale: string = 'en';
-
   events: Observable<CalendarEvent[]>;
 
-  constructor(private eventService: EventService, private router: Router) {
+  constructor(private eventService: EventService, private router: Router, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
     this.fetchEvents();
+  }
+
+  openDialog(id: number, title: string): void {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      width: '400px',
+      data: {
+        id: id,
+        name: title
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.eventService.deleteEvent(result.id).subscribe(
+          res => {
+            this.fetchEvents();
+            this.activeDayIsOpen = false;
+          },
+          error1 => console.log(error1)
+        );
+      }
+    });
   }
 
   fetchEvents(): void {
@@ -50,45 +73,36 @@ export class MaterialCalendarComponent implements OnInit {
                 color: colors.yellow,
                 allDay: true,
                 customerId: res.customerEntity.id,
-                meta: { res },
+                meta: {res},
                 actions: [
-                  {
-                    label: '<i class="fas fa-edit" title="Edit reservation"></i>',
-                    cssClass: 'my-icon',
-                    onClick: ({ event }: { event: CalendarEvent }): void => {
-                      console.log('Show reservation', event);
-                      this.router.navigate([`customers/${res.customerEntity.id}/reservations`]).finally()
-                    },
-                  },
                   {
                     label: '<i class="fas fa-user-alt" title="Show customer"></i>',
                     cssClass: 'my-icon',
                     onClick: ({event}: { event: CalendarEvent }): void => {
-                      console.log('Show customer', event);
                       this.router.navigate([`customers/${res.customerEntity.id}`]).finally()
                     }
+                  },
+                  {
+                    label: '<i class="fas fa-edit" title="Edit reservation"></i>',
+                    cssClass: 'my-icon',
+                    onClick: ({event}: { event: CalendarEvent }): void => {
+                      this.router.navigate([`customers/${res.customerEntity.id}/reservations`]).finally();
+                    },
                   },
                   {
                     label: '<i class="fas fa-trash-alt" title="Delete reservation"></i>',
                     cssClass: 'my-icon',
                     onClick: ({event}: { event: CalendarEvent }): void => {
-                      console.log('Delete customer', event.id);
-                      this.eventService.deleteEvent(+event.id).subscribe(
-                        res => {
-                          this.fetchEvents();
-                          this.activeDayIsOpen = false;
-                        },
-                        error1 => console.log(error1)
-                      );
+                      this.openDialog(+event.id, 'reservation ' + event.title);
                     }
                   }
                 ]
-              }
+              };
             }
-          )
+          );
         }
       )
-    )
+    );
   }
 
   eventTimesChanged({event, newStart, newEnd}: CalendarEventTimesChangedEvent): void {
@@ -101,7 +115,9 @@ export class MaterialCalendarComponent implements OnInit {
     if (isSameMonth(date, this.viewDate)) {
       if ((isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) || events.length === 0) {
         this.activeDayIsOpen = false;
-        this.router.navigateByUrl('add-reservation').finally();
+        this.router.navigate(
+          ['/add-reservation'],
+          {queryParams: {resDate: date.toISOString()}}).finally();
       } else {
         this.activeDayIsOpen = true;
         this.viewDate = date;

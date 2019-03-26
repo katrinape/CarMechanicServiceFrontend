@@ -1,3 +1,7 @@
+.mat-toolbar-single-row {
+  padding: 30px;
+}
+
 .bg-pink {
   background-color: hotpink !important;
 }
@@ -39,7 +43,3 @@ span.cal-event-title.ng-star-inserted:hover,
   text-decoration: none;
   opacity: 1;
 }
-
-/*div.cal-open-day-events.ng-star-inserted {*/
-  /*background-color: white;*/
-/*}*/

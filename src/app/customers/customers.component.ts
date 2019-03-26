@@ -51,11 +51,12 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  openDeleteDialog(id): void {
+  openDeleteDialog(id: number, name: string): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '400px',
       data: {
         id: id,
+        name: name
       }
     });
 

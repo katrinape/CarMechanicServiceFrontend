@@ -1,31 +1,30 @@
 <div *ngIf="cars" class="grid-container">
   <h1 class="mat-h1">Cars</h1>
-  <mat-grid-list cols="3" rowHeight="2:1" gutterSize="10px">
-    <mat-grid-tile *ngFor="let car of cars">
-      <mat-card class="car-card">
-        <mat-card-header>
-          <mat-card-title>
-            {{car.brand}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>Registration number: {{car.regNumber}}</p>
-          <p>Mileage: {{car.mileage}}</p>
-          <p>VIN: {{car.vin}}</p>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <div class="car-container">
+    <mat-card *ngFor="let car of cars">
+      <mat-card-header>
+        <mat-card-title>
+          {{car.brand}}
+          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item>Expand</button>
+            <button mat-menu-item>Remove</button>
+          </mat-menu>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Registration number: {{car.regNumber}}</p>
+        <p>Mileage: {{car.mileage}}</p>
+        <p>VIN: {{car.vin}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
 
   <button class="back-button" mat-raised-button (click)="goBack()">
-    <mat-icon class="backspace-icon">backspace</mat-icon> Go Back
+    <mat-icon class="backspace-icon">backspace</mat-icon>
+    Go Back
   </button>
 
 </div>
