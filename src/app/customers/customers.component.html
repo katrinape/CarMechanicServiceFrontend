@@ -1,4 +1,9 @@
 <div class="mat-elevation-z8">
+  <mat-form-field>
+    <mat-icon color="primary" matPrefix>search</mat-icon>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
   <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Customers">
 
     <!-- Id Column -->
@@ -53,7 +58,7 @@
   </table>
 
   <mat-paginator #paginator
-                 [length]="dataSource.data.length"
+                 [length]="paginator.length"
                  [pageIndex]="0"
                  [pageSize]="10"
                  [pageSizeOptions]="[10, 25, 50, 100]">

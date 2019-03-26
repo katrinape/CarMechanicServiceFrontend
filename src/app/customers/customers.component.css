@@ -11,6 +11,8 @@ button {
 }
 
 .mat-form-field {
-  font-size: 14px;
+  font-size: 18px;
   width: 100%;
+  padding: 24px 24px 0;
+  background-color: #fff;
 }

@@ -1,6 +1,5 @@
 import {Component, Injectable, OnInit, ViewChild} from '@angular/core';
-import {MatDialog, MatPaginator, MatSort} from '@angular/material';
-import {CustomersDataSource} from './customers-datasource';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {CustomerService} from './customer.service';
 import {EditDialogComponent} from './edit-dialog/edit-dialog.component';
 import {Customer} from './customer';
@@ -15,7 +14,8 @@ import {DeleteDialogComponent} from './delete-dialog/delete-dialog.component';
 export class CustomersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource: CustomersDataSource;
+  dataSource: MatTableDataSource<Customer>;
+  customers: Customer[];
   customer: Customer;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
@@ -25,7 +25,18 @@ export class CustomersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource = new CustomersDataSource(this.paginator, this.sort, this.customerService);
+    this.customerService.getCustomers().subscribe(
+      res => {
+        this.customers = res;
+        this.dataSource = new MatTableDataSource(this.customers);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
+    );
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   openEditDialog(customer): void {
