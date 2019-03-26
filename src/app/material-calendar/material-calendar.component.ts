@@ -65,10 +65,10 @@ export class MaterialCalendarComponent implements OnInit {
               return {
                 id: res.id,
                 title:
-                  res.title + ' - ' +
+                  res.title + ' (' +
                   res.customerEntity.name + ' ' +
                   res.customerEntity.surname + ', tel: ' +
-                  res.customerEntity.telNumber,
+                  res.customerEntity.telNumber + ')',
                 start: new Date(res.start),
                 color: colors.yellow,
                 allDay: true,
@@ -93,7 +93,7 @@ export class MaterialCalendarComponent implements OnInit {
                     label: '<i class="fas fa-trash-alt" title="Delete reservation"></i>',
                     cssClass: 'my-icon',
                     onClick: ({event}: { event: CalendarEvent }): void => {
-                      this.openDialog(+event.id, 'reservation ' + event.title);
+                      this.openDialog(+event.id,'reservation for - ' + event.title);
                     }
                   }
                 ]

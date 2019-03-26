@@ -4,10 +4,11 @@ import {Location} from '@angular/common';
 import {CustomerService} from '../customer.service';
 import {Customer} from '../customer';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {DateAdapter} from '@angular/material';
+import {DateAdapter, MatDialog} from '@angular/material';
 import {MyDateAdapter} from '../../add-reservation/my-date-adapter';
 import {EventItem} from '../../events/event-item';
 import {CarItem} from '../../cars/car-item';
+import {DeleteDialogComponent} from '../delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-customer-detail',
@@ -26,6 +27,7 @@ export class CustomerDetailComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    public dialog: MatDialog,
     private dateAdapter: DateAdapter<Date>,
     private customerService: CustomerService,
     private location: Location) {
@@ -107,6 +109,25 @@ export class CustomerDetailComponent implements OnInit {
       res => this.router.navigate([`customers/${this.customer.id}/cars`]),
       error1 => console.log(error1)
     );
+  }
+
+  openDeleteDialog(id: number, name: string): void {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      width: '400px',
+      data: {
+        id: id,
+        name: name
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.customerService.deleteCustomer(result.id).subscribe(
+          res => this.goBack(),
+          err => console.log(err)
+        )
+      }
+    });
   }
 
   myFilter = (d: Date): boolean => {

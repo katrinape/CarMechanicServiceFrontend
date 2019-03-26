@@ -10,6 +10,7 @@
         <mat-menu #menu="matMenu" xPosition="before">
           <button mat-menu-item routerLink="/customers/{{customer.id}}/cars">Show Cars</button>
           <button mat-menu-item routerLink="/customers/{{customer.id}}/reservations">Show Reservations</button>
+          <button mat-menu-item (click)="openDeleteDialog(customer.id, customer.name+' '+customer.surname)">Delete Customer</button>
         </mat-menu>
       </mat-card-title>
       <mat-card-subtitle>Email: {{customer.email}}</mat-card-subtitle>
