@@ -1,15 +1,14 @@
 .grid-container {
-  margin: 20px;
-  width: 100%;
+  margin: 30px auto;
+  width: 90%;
 }
 
 .car-container {
-  /*overflow: hidden;*/
-  display: flex;
+  display: block;
 }
 
 .mat-card {
-  width: 33%;
+  width: 90%;
   margin: 15px;
 }
 
@@ -30,4 +29,22 @@
 
 h1 {
   margin-left: 15px;
+}
+
+@media (min-width: 1200px) {
+  .mat-card {
+    width: 33%;
+  }
+  .car-container {
+    display: flex;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1200px) {
+  .mat-card {
+    width: 50%;
+  }
+  .car-container {
+    display: flex;
+  }
 }

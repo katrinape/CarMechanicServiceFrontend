@@ -1,13 +1,15 @@
 .grid-container {
-  margin: 20px;
+  margin: 30px auto;
+  width: 90%;
 }
 
-.reservation-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+.res-container {
+  display: block;
+}
+
+.mat-card {
+  width: 90%;
+  margin: 15px;
 }
 
 .more-button {
@@ -29,3 +31,20 @@ h1 {
   padding-right: 5px;
 }
 
+@media (min-width: 1200px) {
+  .mat-card {
+    width: 33%;
+  }
+  .res-container {
+    display: flex;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1200px) {
+  .mat-card {
+    width: 50%;
+  }
+  .res-container {
+    display: flex;
+  }
+}

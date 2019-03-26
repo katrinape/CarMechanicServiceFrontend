@@ -1,27 +1,25 @@
 <div *ngIf="reservations" class="grid-container">
   <h1 class="mat-h1">Reservations</h1>
-  <mat-grid-list cols="3" rowHeight="2:1" gutterSize="10px">
-    <mat-grid-tile *ngFor="let reservation of reservations">
-      <mat-card class="reservation-card">
-        <mat-card-header>
-          <mat-card-title class="mat-h2">
-            {{reservation.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Edit</button>
-              <button mat-menu-item>Delete</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p class="mat-h3">Description: {{reservation.description}}</p>
-          <p class="mat-h3">Date: {{reservation.start.substr(0,10)}}</p>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <div class="res-container">
+    <mat-card *ngFor="let reservation of reservations">
+      <mat-card-header>
+        <mat-card-title class="mat-h2">
+          {{reservation.title}}
+          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item>Edit</button>
+            <button mat-menu-item>Delete</button>
+          </mat-menu>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="mat-h3">Description: {{reservation.description}}</p>
+        <p class="mat-h3">Date: {{reservation.start.substr(0,10)}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
   <button class="back-button" mat-raised-button (click)="goBack()">
     <mat-icon class="backspace-icon">backspace</mat-icon> Go Back
   </button>
