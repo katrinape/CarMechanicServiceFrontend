@@ -1,7 +1,7 @@
 import {Component, Injectable, OnInit, ViewChild} from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
-import { RepairsDataSource } from './repairs-datasource';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {RepairService} from './repair.service';
+import {Repair} from './repair';
 
 @Component({
   selector: 'app-repairs',
@@ -12,14 +12,26 @@ import {RepairService} from './repair.service';
 export class RepairsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource: RepairsDataSource;
-
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'title', 'description', 'price'];
+  dataSource: MatTableDataSource<Repair>;
+  repairs: Repair[];
 
-  constructor(private repairService: RepairService) {}
+  constructor(private repairService: RepairService) {
+  }
 
   ngOnInit() {
-    this.dataSource = new RepairsDataSource(this.paginator, this.sort, this.repairService);
+    this.repairService.getRepairs().subscribe(
+      res => {
+        this.repairs = res;
+        this.dataSource = new MatTableDataSource(this.repairs);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      },
+      err => console.log(err)
+    );
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
