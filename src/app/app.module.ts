@@ -32,6 +32,7 @@ import { CustomerReservationsComponent } from './customers/customer-reservations
 import { CalendarHeaderComponent } from './material-calendar/calendar-header/calendar-header.component';
 import {MaterialCalendarComponent} from './material-calendar/material-calendar.component';
 import { ReservationsComponent } from './reservations/reservations.component';
+import { AddRepairComponent } from './add-repair/add-repair.component';
 
 registerLocaleData(localePl);
 
@@ -51,7 +52,8 @@ registerLocaleData(localePl);
     CustomerReservationsComponent,
     MaterialCalendarComponent,
     CalendarHeaderComponent,
-    ReservationsComponent
+    ReservationsComponent,
+    AddRepairComponent
   ],
   imports: [
     BrowserModule,
