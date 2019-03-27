@@ -19,8 +19,7 @@ export class AddCustomerComponent {
     email: [null, Validators.compose([Validators.required, Validators.email])],
     brand: [null, Validators.required],
     regNumber: [null, Validators.required],
-    vin: [null, Validators.required],
-    mileage: [null, Validators.required]
+    vin: [null, Validators.required]
   });
 
   constructor(private fb: FormBuilder, private router: Router, private customerService: CustomerService) {}
@@ -35,8 +34,7 @@ export class AddCustomerComponent {
     let car: CarItem = new CarItem(
       this.addressForm.controls['brand'].value,
       this.addressForm.controls['regNumber'].value,
-      this.addressForm.controls['vin'].value,
-      this.addressForm.controls['mileage'].value
+      this.addressForm.controls['vin'].value
     );
 
     this.customerService.createCustomer(customer).subscribe(
