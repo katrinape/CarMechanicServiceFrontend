@@ -14,7 +14,8 @@ tr.detail-row {
 }
 
 tr.element-row:not(.expanded-row):hover {
-  background: #f5f5f5;
+  /*background: #f5f5f5;*/
+  background: rgba(0,0,0,.1);
 }
 
 tr.element-row:not(.expanded-row):active {

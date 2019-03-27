@@ -8,3 +8,7 @@
   padding: 24px 24px 0;
   background-color: #fff;
 }
+
+.mat-row:hover {
+  background: rgba(0,0,0,.1);
+}

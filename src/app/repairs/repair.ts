@@ -1,6 +1,6 @@
 import {CarItem} from '../cars/car-item';
 
-export interface Repair {
+export class Repair {
   id: number;
   title: string;
   date: string;
@@ -8,6 +8,13 @@ export interface Repair {
   totalPrice: number;
   carEntity: CarItem;
   elements: RepairElement[];
+
+
+  constructor(title: string, date: string, mileage: number) {
+    this.title = title;
+    this.date = date;
+    this.mileage = mileage;
+  }
 }
 
 export interface RepairElement {

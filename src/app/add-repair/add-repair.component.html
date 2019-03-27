@@ -1,3 +1,41 @@
-<p>
-  add-repair works!
-</p>
+<form class="mat-elevation-z8" [formGroup]="repairForm" (ngSubmit)="onSubmit(repairForm.value)" novalidate>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Add Repair</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Title" formControlName="title" type="text">
+        <mat-error *ngIf="repairForm.controls['title'].hasError('required')">
+          Title is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Car</mat-label>
+        <mat-select formControlName="car">
+          <mat-option *ngFor="let car of cars" [value]="car">{{car.brand}} {{car.regNumber}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="repairForm.controls['car'].hasError('required')">
+          Car is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Mileage" formControlName="mileage" type="number">
+        <mat-error *ngIf="repairForm.controls['mileage'].hasError('required')">
+          Title is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Repair date" formControlName="date" [matDatepicker]="picker">
+        <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="repairForm.controls['date'].hasError('required')">
+          Date is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!repairForm.valid">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
