@@ -3,6 +3,7 @@ import {CarItem} from '../cars/car-item';
 export interface Repair {
   id: number;
   title: string;
+  date: string;
   mileage: number;
   totalPrice: number;
   carEntity: CarItem;

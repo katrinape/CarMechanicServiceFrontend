@@ -12,7 +12,7 @@ import {Repair} from './repair';
 export class RepairsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  displayedColumns = ['id', 'title', 'mileage', 'totalPrice', 'car', 'customer'];
+  displayedColumns = ['id', 'title', 'date', 'mileage', 'totalPrice', 'car', 'customer'];
   dataSource: MatTableDataSource<Repair>;
   repairs: Repair[];
 
