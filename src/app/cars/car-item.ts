@@ -1,10 +1,12 @@
+import {Customer} from '../customers/customer';
+
 export class CarItem {
   id: number;
   brand: string;
   regNumber: string;
   vin: string;
   mileage: string;
-  customerEntity: object;
+  customerEntity: Customer;
   repairs: object[];
 
   constructor(brand: string, regNumber: string, vin: string, mileage: string) {
