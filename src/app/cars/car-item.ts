@@ -5,14 +5,12 @@ export class CarItem {
   brand: string;
   regNumber: string;
   vin: string;
-  mileage: string;
   customerEntity: Customer;
   repairs: object[];
 
-  constructor(brand: string, regNumber: string, vin: string, mileage: string) {
+  constructor(brand: string, regNumber: string, vin: string) {
     this.brand = brand;
     this.regNumber = regNumber;
     this.vin = vin;
-    this.mileage = mileage;
   }
 }

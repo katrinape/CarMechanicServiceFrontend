@@ -12,10 +12,9 @@ import {CarItem} from './car-item';
 export class CarsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  displayedColumns = ['id', 'brand', 'regNumber', 'vin', 'mileage', 'owner'];
+  displayedColumns = ['id', 'brand', 'regNumber', 'vin', 'owner'];
   dataSource: MatTableDataSource<CarItem>;
   cars: CarItem[];
-  car: CarItem;
 
   constructor(private carService: CarService) {
   }
