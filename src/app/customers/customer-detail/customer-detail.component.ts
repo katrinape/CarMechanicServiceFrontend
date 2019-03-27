@@ -44,8 +44,7 @@ export class CustomerDetailComponent implements OnInit {
     this.addCarForm = this.fb.group({
         brand: [null, Validators.required],
         regNumber: [null, Validators.required],
-        vin: [null, Validators.required],
-        mileage: [null, Validators.required]
+        vin: [null, Validators.required]
       }
     );
   }
@@ -102,8 +101,7 @@ export class CustomerDetailComponent implements OnInit {
     let car: CarItem = new CarItem(
       this.addCarForm.controls['brand'].value,
       this.addCarForm.controls['regNumber'].value,
-      this.addCarForm.controls['vin'].value,
-      this.addCarForm.controls['mileage'].value,
+      this.addCarForm.controls['vin'].value
     );
     this.customerService.addCarToCustomer(car, this.customer.id).subscribe(
       res => this.router.navigate([`customers/${this.customer.id}/cars`]),

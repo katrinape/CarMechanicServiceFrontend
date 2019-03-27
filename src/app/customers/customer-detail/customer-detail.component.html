@@ -123,12 +123,6 @@
                   VIN is <strong>required</strong>
                 </mat-error>
               </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="Mileage" formControlName="mileage">
-                <mat-error *ngIf="addCarForm.controls['mileage'].hasError('required')">
-                  Mileage is <strong>required</strong>
-                </mat-error>
-              </mat-form-field>
             <mat-action-row>
               <button mat-raised-button color="primary" type="submit" [disabled]="!addCarForm.valid">Submit</button>
             </mat-action-row>
