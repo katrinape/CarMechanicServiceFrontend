@@ -12,7 +12,7 @@ import {Repair} from './repair';
 export class RepairsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  displayedColumns = ['id', 'title', 'description', 'price'];
+  displayedColumns = ['id', 'title', 'mileage', 'totalPrice', 'car', 'customer'];
   dataSource: MatTableDataSource<Repair>;
   repairs: Repair[];
 
@@ -22,10 +22,30 @@ export class RepairsComponent implements OnInit {
   ngOnInit() {
     this.repairService.getRepairs().subscribe(
       res => {
+        console.log(res);
         this.repairs = res;
         this.dataSource = new MatTableDataSource(this.repairs);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+        this.dataSource.sortingDataAccessor = (item, property) => {
+          switch(property) {
+            case 'car': return item.carEntity.brand;
+            case 'customer': return item.carEntity.customerEntity.name + ' ' +
+                                    item.carEntity.customerEntity.surname;
+            default: return item[property];
+          }
+        };
+        this.dataSource.filterPredicate = (data: Repair, filter: string) => {
+          const dataStr =
+            data.id + ' ' +
+            data.title + ' ' +
+            data.mileage + ' ' +
+            data.totalPrice + ' ' +
+            data.carEntity.brand + ' ' +
+            data.carEntity.customerEntity.name + ' ' +
+            data.carEntity.customerEntity.surname;
+          return dataStr.trim().toLocaleLowerCase().indexOf(filter) != -1;
+        }
       },
       err => console.log(err)
     );
