@@ -15,4 +15,9 @@ export class RepairService {
   getRepairs(): Observable<Repair[]> {
     return this.http.get<Repair[]>(this.repairsUrl);
   }
+
+  getRepair(id: number): Observable<Repair> {
+    const url = `${this.repairsUrl}/${id}`;
+    return this.http.get<Repair>(url);
+  }
 }

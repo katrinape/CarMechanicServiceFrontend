@@ -12,3 +12,7 @@
 .mat-row:hover {
   background: rgba(0,0,0,.1);
 }
+
+button {
+  margin-right: 10px;
+}

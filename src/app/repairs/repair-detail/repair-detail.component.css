@@ -1,0 +1,25 @@
+.mat-card-title {
+  font-size: 1.6rem !important;
+}
+
+.mat-card-subtitle {
+  font-size: 1.2rem;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.mat-footer-cell {
+  font-weight: bold;
+}
+
+.mat-cell,
+.mat-header-cell,
+.mat-footer-cell {
+  font-size: 1.1rem !important;
+}
+
+.mat-row:hover {
+  background: rgba(0,0,0,.1);
+}

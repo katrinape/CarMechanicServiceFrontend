@@ -51,16 +51,15 @@ export class CustomerDetailComponent implements OnInit {
 
   getCustomer(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.customerService.getCustomer(id)
-      .subscribe(customer => {
-        this.customer = customer;
-        this.customerForm = this.fb.group({
-          name: [this.customer.name, Validators.required],
-          surname: [this.customer.surname, Validators.required],
-          telNumber: [this.customer.telNumber, Validators.compose([Validators.required, Validators.minLength(9)])],
-          email: [this.customer.email, Validators.compose([Validators.required, Validators.email])],
-        });
+    this.customerService.getCustomer(id).subscribe(customer => {
+      this.customer = customer;
+      this.customerForm = this.fb.group({
+        name: [this.customer.name, Validators.required],
+        surname: [this.customer.surname, Validators.required],
+        telNumber: [this.customer.telNumber, Validators.compose([Validators.required, Validators.minLength(9)])],
+        email: [this.customer.email, Validators.compose([Validators.required, Validators.email])],
       });
+    });
   }
 
   goBack(): void {
@@ -123,7 +122,7 @@ export class CustomerDetailComponent implements OnInit {
         this.customerService.deleteCustomer(result.id).subscribe(
           res => this.goBack(),
           err => console.log(err)
-        )
+        );
       }
     });
   }

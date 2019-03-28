@@ -33,6 +33,7 @@ import { CalendarHeaderComponent } from './material-calendar/calendar-header/cal
 import {MaterialCalendarComponent} from './material-calendar/material-calendar.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { AddRepairComponent } from './add-repair/add-repair.component';
+import { RepairDetailComponent } from './repairs/repair-detail/repair-detail.component';
 
 registerLocaleData(localePl);
 
@@ -53,7 +54,8 @@ registerLocaleData(localePl);
     MaterialCalendarComponent,
     CalendarHeaderComponent,
     ReservationsComponent,
-    AddRepairComponent
+    AddRepairComponent,
+    RepairDetailComponent
   ],
   imports: [
     BrowserModule,

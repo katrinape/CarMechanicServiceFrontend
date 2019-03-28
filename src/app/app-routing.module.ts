@@ -12,6 +12,7 @@ import {CustomerCarsComponent} from './customers/customer-cars/customer-cars.com
 import {MaterialCalendarComponent} from './material-calendar/material-calendar.component';
 import {ReservationsComponent} from './reservations/reservations.component';
 import {AddRepairComponent} from './add-repair/add-repair.component';
+import {RepairDetailComponent} from './repairs/repair-detail/repair-detail.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'calendar', pathMatch: 'full'},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'customers/:id/reservations', component: CustomerReservationsComponent},
   {path: 'customers/:id/cars', component: CustomerCarsComponent},
   {path: 'repairs', component: RepairsComponent},
+  {path: 'repairs/:id', component: RepairDetailComponent},
   {path: 'reservations', component: EventsComponent},
   {path: 'res', component: ReservationsComponent},
   {path: 'res/customers/:id', redirectTo: 'customers/:id', pathMatch: 'full'},
