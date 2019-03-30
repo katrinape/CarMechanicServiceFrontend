@@ -1,0 +1,22 @@
+<mat-card>
+  <form [formGroup]="itemForm" (ngSubmit)="addItem()" novalidate>
+    <mat-card-header>
+      <mat-card-title>Add Item</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <mat-form-field class="col">
+          <input matInput type="text" placeholder="Item name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="col">
+          <input matInput type="number" placeholder="Price" formControlName="price">
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="accent" type="submit" [disabled]="!itemForm.valid">
+        <mat-icon class="action-icon">save</mat-icon>Save
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

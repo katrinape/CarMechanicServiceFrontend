@@ -4,7 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {
-  MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCommonModule, MatDatepickerModule,
+  MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatChipsModule, MatCommonModule, MatDatepickerModule,
   MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule,
   MatNativeDateModule, MatPaginatorModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule,
   MatSortModule, MatStepperModule, MatTableModule, MatToolbarModule, MatTooltipModule, MatTreeModule
@@ -34,6 +34,7 @@ import {MaterialCalendarComponent} from './material-calendar/material-calendar.c
 import { ReservationsComponent } from './reservations/reservations.component';
 import { AddRepairComponent } from './add-repair/add-repair.component';
 import { RepairDetailComponent } from './repairs/repair-detail/repair-detail.component';
+import { AddItemComponent } from './repairs/repair-detail/add-item/add-item.component';
 
 registerLocaleData(localePl);
 
@@ -55,7 +56,8 @@ registerLocaleData(localePl);
     CalendarHeaderComponent,
     ReservationsComponent,
     AddRepairComponent,
-    RepairDetailComponent
+    RepairDetailComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +73,7 @@ registerLocaleData(localePl);
     MatButtonToggleModule,
     MatGridListModule,
     MatCardModule,
+    MatChipsModule,
     MatCommonModule,
     MatDatepickerModule,
     MatDialogModule,

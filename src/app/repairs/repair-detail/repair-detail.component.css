@@ -10,16 +10,26 @@
   width: 100%;
 }
 
-.mat-footer-cell {
-  font-weight: bold;
+.mat-cell,
+.mat-header-cell {
+  font-size: 1.1rem !important;
 }
 
-.mat-cell,
-.mat-header-cell,
 .mat-footer-cell {
-  font-size: 1.1rem !important;
+  font-size: 1.5rem !important;
+  font-weight: 500;
 }
 
 .mat-row:hover {
   background: rgba(0,0,0,.1);
+}
+
+mat-chip {
+  font-size: 1.2rem !important;
+  padding: 20px !important;
+}
+
+mat-card-actions button mat-icon,
+mat-chip mat-icon {
+  margin-right: 7px;
 }

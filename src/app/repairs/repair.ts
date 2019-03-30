@@ -9,17 +9,22 @@ export class Repair {
   carEntity: CarItem;
   elements: RepairElement[];
 
-
   constructor(title: string, date: string, mileage: number) {
     this.title = title;
     this.date = date;
     this.mileage = mileage;
+    this.elements = [];
   }
 }
 
-export interface RepairElement {
+export class RepairElement {
   id: number;
-  title: string;
+  name: string;
   price: number;
   repairEntity: Repair;
+
+  constructor(title: string, price: number) {
+    this.name = title;
+    this.price = price;
+  }
 }

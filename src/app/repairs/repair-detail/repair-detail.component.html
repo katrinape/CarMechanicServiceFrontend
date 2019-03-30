@@ -2,47 +2,53 @@
   <mat-card>
     <mat-card-header>
       <div mat-card-avatar><mat-icon>build</mat-icon></div>
-        <mat-card-title>{{repair.title}}</mat-card-title>
-        <mat-card-subtitle>{{repair.date}}</mat-card-subtitle>
-        <mat-card-subtitle>{{repair.mileage}} km</mat-card-subtitle>
+      <mat-card-title>{{repair.title}}</mat-card-title>
+      <mat-card-subtitle>
+        <mat-chip-list>
+          <mat-chip selected color="warn"><mat-icon>today</mat-icon>{{repair.date}}</mat-chip>
+          <mat-chip selected color="primary"><mat-icon>drive_eta</mat-icon>{{repair.mileage}} km</mat-chip>
+        </mat-chip-list>
+      </mat-card-subtitle>
     </mat-card-header>
 
-    <mat-card-content>
-      <div class="mat-elevation-z2">
-        <table mat-table [dataSource]="repair.elements">
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
-            <td mat-cell *matCellDef="let element">{{element.name}}</td>
-            <td mat-footer-cell *matFooterCellDef> Total </td>
-          </ng-container>
+    <mat-card-content class="mat-elevation-z2">
+      <table mat-table [dataSource]="repair.elements">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{element.name}}</td>
+          <td mat-footer-cell *matFooterCellDef>Total</td>
+        </ng-container>
 
-          <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef>Price</th>
-            <td mat-cell *matCellDef="let element">{{element.price}} zł</td>
-            <td mat-footer-cell *matFooterCellDef>{{repair.totalPrice}} zł</td>
-          </ng-container>
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Price</th>
+          <td mat-cell *matCellDef="let element">{{element.price}} zł</td>
+          <td mat-footer-cell *matFooterCellDef>{{repair.totalPrice}} zł</td>
+        </ng-container>
 
-          <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> Action</th>
-            <td mat-cell *matCellDef="let element">
-              <button mat-raised-button matTooltip="Delete Element"
-                      (click)="openDeleteDialog(element.id, '')">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </td>
-            <td mat-footer-cell *matFooterCellDef></td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
-          <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
-        </table>
-      </div>
-
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button matTooltip="Delete Element"
+                    (click)="openDeleteDialog(element.id, element.name)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+          <td mat-footer-cell *matFooterCellDef>
+            <button mat-raised-button color="accent" matTooltip="Add Element" routerLink="add-item">
+              <mat-icon>add_circle</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+      </table>
     </mat-card-content>
+    <mat-card-actions>
+      <router-outlet></router-outlet>
+      <button mat-button (click)="goBack()">
+        <mat-icon class="action-icon" color="primary">backspace</mat-icon>Go Back
+      </button>
+    </mat-card-actions>
   </mat-card>
 </div>
-
-<button mat-button (click)="goBack()">
-  <mat-icon class="action-icon">backspace</mat-icon> Go Back
-</button>
