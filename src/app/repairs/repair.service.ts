@@ -27,6 +27,11 @@ export class RepairService {
     return this.http.put<Repair>(this.repairsUrl, repair, this.options);
   }
 
+  deleteRepair(id: number): Observable<{}> {
+    const url = `${this.repairsUrl}/${id}`;
+    return this.http.delete(url, this.options);
+  }
+
   addElement(element: RepairElement, id: number): Observable<Repair> {
     const url = `${this.repairsUrl}/${id}/elements`;
     return this.http.post<Repair>(url, element, this.options);

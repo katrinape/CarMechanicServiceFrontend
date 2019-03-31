@@ -1,7 +1,8 @@
 import {Component, Injectable, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {RepairService} from './repair.service';
 import {Repair} from './repair';
+import {DeleteDialogComponent} from '../customers/delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-repairs',
@@ -16,7 +17,7 @@ export class RepairsComponent implements OnInit {
   dataSource: MatTableDataSource<Repair>;
   repairs: Repair[];
 
-  constructor(private repairService: RepairService) {
+  constructor(private repairService: RepairService, public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -52,5 +53,24 @@ export class RepairsComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  openDeleteDialog(id: number, name: string): void {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      width: '400px',
+      data: {
+        id: id,
+        name: name
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.repairService.deleteRepair(result.id).subscribe(
+          res => this.ngOnInit(),
+          err => console.log(err)
+        )
+      }
+    });
   }
 }
