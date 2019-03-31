@@ -5,15 +5,19 @@
     </mat-card-header>
     <mat-card-content>
       <div class="row">
-        <mat-form-field class="col">
-          <input matInput type="text" placeholder="Item name" formControlName="name">
-        </mat-form-field>
-        <mat-form-field class="col">
-          <input matInput type="number" placeholder="Price" formControlName="price">
-        </mat-form-field>
-        <div class="col">
+        <div class="name">
+          <mat-form-field >
+            <input matInput type="text" placeholder="Item name" formControlName="name">
+          </mat-form-field>
+        </div>
+        <div class="price">
+          <mat-form-field>
+            <input matInput type="number" placeholder="Price" formControlName="price">
+          </mat-form-field>
+        </div>
+        <div class="action">
           <button mat-raised-button color="accent" type="submit" [disabled]="!itemForm.valid">
-            <mat-icon class="action-icon">save</mat-icon>Save
+            <mat-icon class="action-icon">save</mat-icon>
           </button>
         </div>
       </div>

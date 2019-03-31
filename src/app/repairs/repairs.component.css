@@ -16,3 +16,7 @@
 button {
   margin-right: 10px;
 }
+
+.mat-column-action {
+  text-align: center !important;
+}

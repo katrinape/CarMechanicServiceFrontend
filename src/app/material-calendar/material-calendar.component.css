@@ -43,3 +43,8 @@ span.cal-event-title.ng-star-inserted:hover,
   text-decoration: none;
   opacity: 1;
 }
+
+span.cal-day-badge {
+  background-color: #3f51b5 !important;
+  font-size: 14px !important;
+}

@@ -29,7 +29,24 @@ mat-chip {
   padding: 20px !important;
 }
 
-mat-card-actions button mat-icon,
-mat-chip mat-icon {
-  margin-right: 7px;
+.mat-column-name {
+  width: 50% !important;
+}
+
+.mat-column-price {
+  text-align: right;
+  width: 25% !important;
+}
+
+.mat-column-action {
+  text-align: center;
+  width: 25% !important;
+}
+
+.mat-raised-button {
+  margin: 8px !important;
+}
+
+span {
+  padding: 7px;
 }

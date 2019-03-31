@@ -23,6 +23,10 @@ mat-form-field {
   right: 10px;
 }
 
-.action-icon {
-  padding-right: 5px;
+span {
+  padding: 7px;
+}
+
+.mat-raised-button {
+  margin: 8px !important;
 }

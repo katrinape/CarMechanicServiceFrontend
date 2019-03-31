@@ -105,24 +105,24 @@
           </mat-expansion-panel-header>
 
           <form [formGroup]="addCarForm" novalidate (ngSubmit)="addCarFormSubmit()">
-              <mat-form-field>
-                <input matInput placeholder="Car brand" formControlName="brand">
-                <mat-error *ngIf="addCarForm.controls['brand'].hasError('required')">
-                  Car brand is <strong>required</strong>
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="Registration number" formControlName="regNumber">
-                <mat-error *ngIf="addCarForm.controls['regNumber'].hasError('required')">
-                  Registration number is <strong>required</strong>
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="VIN" formControlName="vin">
-                <mat-error *ngIf="addCarForm.controls['vin'].hasError('required')">
-                  VIN is <strong>required</strong>
-                </mat-error>
-              </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Car brand" formControlName="brand">
+              <mat-error *ngIf="addCarForm.controls['brand'].hasError('required')">
+                Car brand is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Registration number" formControlName="regNumber">
+              <mat-error *ngIf="addCarForm.controls['regNumber'].hasError('required')">
+                Registration number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="VIN" formControlName="vin">
+              <mat-error *ngIf="addCarForm.controls['vin'].hasError('required')">
+                VIN is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
             <mat-action-row>
               <button mat-raised-button color="primary" type="submit" [disabled]="!addCarForm.valid">Submit</button>
             </mat-action-row>
@@ -132,13 +132,18 @@
     </mat-card-content><!-- content -->
 
     <mat-card-actions>
-      <button mat-button (click)="goBack()">
-        <mat-icon class="action-icon">backspace</mat-icon> Go Back</button>
-      <button mat-button routerLink="/customers/{{customer.id}}/cars">
-        <mat-icon class="action-icon">drive_eta</mat-icon> Cars
+      <button mat-raised-button color="primary" (click)="goBack()">
+        <mat-icon class="action-icon">backspace</mat-icon>
+        <span>Go Back</span>
       </button>
-      <button mat-button routerLink="/customers/{{customer.id}}/reservations">
-        <mat-icon class="action-icon">event_note</mat-icon> Reservations</button>
+      <button mat-raised-button routerLink="/customers/{{customer.id}}/cars">
+        <mat-icon class="action-icon">drive_eta</mat-icon>
+        <span>Cars</span>
+      </button>
+      <button mat-raised-button routerLink="/customers/{{customer.id}}/reservations">
+        <mat-icon>event_note</mat-icon>
+        <span>Reservations</span>
+      </button>
     </mat-card-actions><!-- actions -->
   </mat-card>
 </div>

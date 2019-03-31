@@ -16,3 +16,7 @@ button {
   padding: 24px 24px 0;
   background-color: #fff;
 }
+
+.mat-column-action {
+  text-align: center;
+}

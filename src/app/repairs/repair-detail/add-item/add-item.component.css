@@ -1,8 +1,25 @@
-form button mat-icon {
-  margin-right: 7px;
-}
-
 mat-card {
   width: 100%;
   margin: auto;
+}
+
+.name {
+  width: 50% !important;
+  padding: 24px;
+}
+
+.price {
+  text-align: right;
+  width: 25% !important;
+  padding: 24px 0;
+}
+
+.action {
+  text-align: center;
+  width: 25% !important;
+  padding: 24px 24px 24px 0;
+}
+
+mat-form-field {
+  width: 100%;
 }
