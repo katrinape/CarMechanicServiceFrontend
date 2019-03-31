@@ -3,6 +3,6 @@ form button mat-icon {
 }
 
 mat-card {
-  width: 300px;
+  width: 100%;
   margin: auto;
 }

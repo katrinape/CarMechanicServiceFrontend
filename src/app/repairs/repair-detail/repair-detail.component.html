@@ -43,10 +43,10 @@
         <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
         <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
       </table>
+      <router-outlet (deactivate)="refresh()"></router-outlet>
     </mat-card-content>
     <mat-card-actions>
-      <router-outlet></router-outlet>
-      <button mat-button (click)="goBack()">
+      <button mat-raised-button (click)="goBack()">
         <mat-icon class="action-icon" color="primary">backspace</mat-icon>Go Back
       </button>
     </mat-card-actions>

@@ -30,22 +30,16 @@ export class AddItemComponent implements OnInit {
       this.itemForm.controls['name'].value,
       this.itemForm.controls['price'].value
     );
-    console.log(this.repair);
     this.repairService.addElement(item, this.repair.id).subscribe(
-      res => {
-        console.log(res);
-        this.router.navigate([`repairs/${this.repair.id}`]).finally()
-      },
+      res => this.router.navigate([`repairs/${this.repair.id}`]).finally(),
       error1 => console.log(error1)
     )
   }
 
   getRepair(): void {
     const id = +this.route.parent.snapshot.paramMap.get('id');
-    console.log(id);
-    this.repairService.getRepair(id).subscribe(repair => {
-      this.repair = repair;
-      console.log(repair)
-    });
+    this.repairService.getRepair(id).subscribe(
+      repair => this.repair = repair,
+      error1 => console.log(error1));
   }
 }

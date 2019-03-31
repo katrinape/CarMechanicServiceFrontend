@@ -24,6 +24,10 @@ export class RepairDetailComponent implements OnInit {
     this.getRepair();
   }
 
+  refresh() {
+    this.ngOnInit();
+  }
+
   getRepair(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.repairService.getRepair(id).subscribe(repair => {

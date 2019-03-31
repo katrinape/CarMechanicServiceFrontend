@@ -22,7 +22,6 @@ export class RepairsComponent implements OnInit {
   ngOnInit() {
     this.repairService.getRepairs().subscribe(
       res => {
-        console.log(res);
         this.repairs = res;
         this.dataSource = new MatTableDataSource(this.repairs);
         this.dataSource.sort = this.sort;

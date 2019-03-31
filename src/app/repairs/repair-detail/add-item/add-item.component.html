@@ -11,12 +11,12 @@
         <mat-form-field class="col">
           <input matInput type="number" placeholder="Price" formControlName="price">
         </mat-form-field>
+        <div class="col">
+          <button mat-raised-button color="accent" type="submit" [disabled]="!itemForm.valid">
+            <mat-icon class="action-icon">save</mat-icon>Save
+          </button>
+        </div>
       </div>
     </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-raised-button color="accent" type="submit" [disabled]="!itemForm.valid">
-        <mat-icon class="action-icon">save</mat-icon>Save
-      </button>
-    </mat-card-actions>
   </form>
 </mat-card>
