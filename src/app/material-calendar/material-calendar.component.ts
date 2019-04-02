@@ -70,7 +70,7 @@ export class MaterialCalendarComponent implements OnInit {
                   res.customerEntity.surname + ', tel: ' +
                   res.customerEntity.telNumber + ')',
                 start: new Date(res.start),
-                color: colors.yellow,
+                color: colors.pink,
                 allDay: true,
                 customerId: res.customerEntity.id,
                 meta: {res},
@@ -134,7 +134,7 @@ export class MaterialCalendarComponent implements OnInit {
     renderEvent.body.forEach(day => {
       const dayOfMonth = day.date.getDate();
       if (day.inMonth && day.isWeekend) {
-        day.cssClass = 'bg-pink';
+        // day.cssClass = 'bg-pink';
       }
     });
   }
@@ -152,6 +152,10 @@ export const colors: any = {
   yellow: {
     primary: '#e3bc08',
     secondary: '#FDF1BA'
+  },
+  pink: {
+    primary: '#ff4081',
+    secondary: '#fff'
   }
 };
 

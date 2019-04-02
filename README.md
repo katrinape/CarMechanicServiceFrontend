@@ -3,7 +3,11 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
 
 ## Screenshots
-![IMG](./img/CarMechanicService.png)
+![IMG1](./img/Calendar.png)
+
+![IMG2](./img/CarMechanicService.png)
+
+![IMG3](./img/Reservation.png)
 
 ## General info
 This is Java frontend application with client-server architecture which can be used to monitor activities for customers, customer's reservations, cars and cars' repairs. It's all about create, update, delete and search all mentioned entites.
