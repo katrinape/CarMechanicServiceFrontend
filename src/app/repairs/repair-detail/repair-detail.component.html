@@ -5,8 +5,22 @@
       <mat-card-title>{{repair.title}}</mat-card-title>
       <mat-card-subtitle>
         <mat-chip-list>
-          <mat-chip selected color="warn"><mat-icon>today</mat-icon>{{repair.date}}</mat-chip>
-          <mat-chip selected color="primary"><mat-icon>drive_eta</mat-icon>{{repair.mileage}} km</mat-chip>
+          <mat-chip selected color="accent" matTooltip="Repair date">
+            <mat-icon>today</mat-icon>
+            <span>{{repair.date}}</span>
+          </mat-chip>
+          <mat-chip selected color="primary" matTooltip="Car owner">
+            <mat-icon>person</mat-icon>
+            <span>{{repair.carEntity.customerEntity.name}} {{repair.carEntity.customerEntity.surname}}</span>
+          </mat-chip>
+          <mat-chip selected color="primary" matTooltip="Owner phone number">
+            <mat-icon>phone</mat-icon>
+            <span>{{repair.carEntity.customerEntity.telNumber}}</span>
+          </mat-chip>
+          <mat-chip selected color="primary" matTooltip="Car mileage">
+            <mat-icon>drive_eta</mat-icon>
+            <span>{{repair.mileage}} km</span>
+          </mat-chip>
         </mat-chip-list>
       </mat-card-subtitle>
     </mat-card-header>
