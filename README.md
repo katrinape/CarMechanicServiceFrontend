@@ -57,4 +57,4 @@ This application is related with the Java backend app:
 Project is: _in progress_
 
 ## Contact
-Created by [@katrinape](https://github.com/katrinape) - feel free to contact me!
+Created by [@katrinape](https://www.linkedin.com/in/catherine-pe) - feel free to contact me!
